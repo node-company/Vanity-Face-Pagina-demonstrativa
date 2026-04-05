@@ -59,7 +59,7 @@ export default function Clinica() {
                 muted
                 playsInline
                 preload="none"
-                poster="/images/frente-clinica.png"
+                poster="/images/frente-clinica.jpg"
                 className="w-full h-full object-cover"
               >
                 {isVisible && (

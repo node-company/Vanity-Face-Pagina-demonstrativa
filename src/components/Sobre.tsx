@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
 
@@ -31,6 +29,7 @@ export default function Sobre() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
+                  loading="lazy"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 w-48 h-64 border border-gold/20 -z-10" />

@@ -37,11 +37,12 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           <a href="#inicio" className="flex-shrink-0">
             <Image
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt="Vanity Face"
               width={180}
               height={50}
               className="h-12 w-auto"
+              sizes="180px"
               priority
             />
           </a>

@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 
 const navLinks = [
@@ -18,11 +16,13 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-12 items-start">
           <div className="space-y-4">
             <Image
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt="Vanity Face"
               width={160}
               height={44}
               className="h-10 w-auto"
+              sizes="160px"
+              loading="lazy"
             />
             <p className="text-cream/40 text-sm font-light leading-relaxed">
               Dr. Vitor S. Fernandes &mdash; CRO 8723-ES

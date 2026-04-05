@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 
 export default function Hero() {
@@ -9,10 +7,11 @@ export default function Hero() {
       className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden"
     >
       <Image
-        src="/images/frente-clinica.png"
+        src="/images/frente-clinica.jpg"
         alt="Fachada da Clinica Vanity Face"
         fill
         className="object-cover object-center"
+        sizes="100vw"
         priority
       />
 

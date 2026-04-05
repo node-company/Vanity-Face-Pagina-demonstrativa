@@ -1,5 +1,3 @@
-"use client";
-
 import AnimatedSection from "./AnimatedSection";
 
 const procedimentos = [
