@@ -13,15 +13,23 @@
   --font-sans: "Montserrat", system-ui, sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
   background: var(--color-navy);
   color: #f0ece4;
   font-family: var(--font-sans);
-  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+#__next,
+html,
+body {
+  overscroll-behavior-y: none;
 }
 
 ::selection {

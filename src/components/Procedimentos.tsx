@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 
 const procedimentos = [
@@ -111,10 +110,8 @@ export default function Procedimentos() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {procedimentos.map((proc, i) => (
             <AnimatedSection key={proc.title} delay={i * 0.05}>
-              <motion.div
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative p-8 bg-navy border border-cream/5 hover:border-gold/20 transition-all duration-500 h-full"
+              <div
+                className="group relative p-8 bg-navy border border-cream/5 hover:border-gold/20 transition-all duration-500 h-full lg:hover:-translate-y-2"
               >
                 <div className="absolute top-0 left-0 w-0 h-px bg-gold transition-all duration-500 group-hover:w-full" />
                 <div className="absolute top-0 right-0 w-px h-0 bg-gold transition-all duration-500 group-hover:h-full" />
@@ -132,7 +129,7 @@ export default function Procedimentos() {
                 <p className="text-cream/50 text-sm leading-relaxed font-light">
                   {proc.description}
                 </p>
-              </motion.div>
+              </div>
             </AnimatedSection>
           ))}
         </div>

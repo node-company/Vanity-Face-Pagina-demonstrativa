@@ -48,7 +48,7 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${cormorant.variable} ${montserrat.variable} antialiased`}
     >
-      <body className="min-h-[100dvh]">{children}</body>
+      <body className="min-h-[100dvh] overflow-x-hidden">{children}</body>
     </html>
   );
 }
