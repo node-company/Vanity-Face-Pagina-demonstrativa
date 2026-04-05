@@ -1,8 +1,43 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
 
 export default function Clinica() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
+
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+        const video = videoRef.current;
+        if (!video) return;
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [isMobile]);
+
   return (
     <section id="clinica" className="relative py-28 lg:py-36 bg-navy-light">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
@@ -25,16 +60,31 @@ export default function Clinica() {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <AnimatedSection delay={0.1}>
-            <div className="relative aspect-[16/10] overflow-hidden">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover"
-              >
-                <source src="/images/video-espaco.mp4" type="video/mp4" />
-              </video>
+            <div ref={containerRef} className="relative aspect-[16/10] overflow-hidden">
+              {isMobile ? (
+                <Image
+                  src="/images/frente-clinica.png"
+                  alt="Fachada da Clinica Vanity Face"
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                  loading="lazy"
+                />
+              ) : (
+                <video
+                  ref={videoRef}
+                  loop
+                  muted
+                  playsInline
+                  preload="none"
+                  poster="/images/frente-clinica.png"
+                  className="w-full h-full object-cover"
+                >
+                  {isVisible && (
+                    <source src="/images/video-espaco.mp4" type="video/mp4" />
+                  )}
+                </video>
+              )}
               <div className="absolute inset-0 border border-gold/10 pointer-events-none" />
             </div>
           </AnimatedSection>
