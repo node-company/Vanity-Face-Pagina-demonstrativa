@@ -104,7 +104,7 @@ export default function Contato() {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3741.5!2d-40.2896!3d-20.2997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sR.+Alaor+de+Queir%C3%B3z+Ara%C3%BAjo%2C+296+-+Enseada+do+Su%C3%A1%2C+Vit%C3%B3ria+-+ES%2C+29050-245!5e0!3m2!1spt-BR!2sbr!4v1"
                 width="100%"
                 height="100%"
-                style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(0.9) contrast(1.1)" }}
+                style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

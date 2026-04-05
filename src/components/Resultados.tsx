@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
 
 const resultados = [
@@ -52,7 +51,7 @@ export default function Resultados() {
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-5 py-2 text-xs tracking-widest uppercase font-medium transition-all duration-300 ${
+                className={`px-5 py-2 text-xs tracking-widest uppercase font-medium transition-colors duration-300 ${
                   filter === cat
                     ? "bg-gold text-navy"
                     : "border border-cream/15 text-cream/50 hover:border-gold/40 hover:text-gold"
@@ -64,109 +63,89 @@ export default function Resultados() {
           </div>
         </AnimatedSection>
 
-        <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <AnimatePresence mode="popLayout">
-            {filtered.map((item, i) => (
-              <motion.div
-                key={item.src}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, delay: i * 0.03 }}
-                className="group relative cursor-pointer"
-                onClick={() => setLightbox(resultados.indexOf(item))}
-              >
-                <div className="relative aspect-square overflow-hidden bg-navy-light">
-                  <Image
-                    src={item.src}
-                    alt={`Resultado: ${item.label}`}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                    <p className="text-cream text-sm font-medium tracking-wider uppercase">
-                      {item.label}
-                    </p>
-                  </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filtered.map((item) => (
+            <div
+              key={item.src}
+              className="group relative cursor-pointer"
+              onClick={() => setLightbox(resultados.indexOf(item))}
+            >
+              <div className="relative aspect-square overflow-hidden bg-navy-light">
+                <Image
+                  src={item.src}
+                  alt={`Resultado: ${item.label}`}
+                  fill
+                  className="object-cover lg:transition-transform lg:duration-500 lg:group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  loading="lazy"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-navy/80 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <p className="text-cream text-xs font-medium tracking-wider uppercase">
+                    {item.label}
+                  </p>
                 </div>
-                <div className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-gold/0 group-hover:bg-gold transition-all duration-300 opacity-0 group-hover:opacity-100">
-                  <svg className="w-4 h-4 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                  </svg>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <AnimatePresence>
-        {lightbox !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
+      {lightbox !== null && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
+          onClick={() => setLightbox(null)}
+        >
+          <button
+            className="absolute top-6 right-6 text-cream/60 hover:text-gold transition-colors"
             onClick={() => setLightbox(null)}
           >
-            <button
-              className="absolute top-6 right-6 text-cream/60 hover:text-gold transition-colors"
-              onClick={() => setLightbox(null)}
-            >
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
 
-            <button
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-cream/60 hover:text-gold transition-colors p-2"
-              onClick={(e) => {
-                e.stopPropagation();
-                setLightbox(lightbox > 0 ? lightbox - 1 : resultados.length - 1);
-              }}
-            >
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-              </svg>
-            </button>
+          <button
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-cream/60 hover:text-gold transition-colors p-2"
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightbox(lightbox > 0 ? lightbox - 1 : resultados.length - 1);
+            }}
+          >
+            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </button>
 
-            <button
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-cream/60 hover:text-gold transition-colors p-2"
-              onClick={(e) => {
-                e.stopPropagation();
-                setLightbox(lightbox < resultados.length - 1 ? lightbox + 1 : 0);
-              }}
-            >
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-              </svg>
-            </button>
+          <button
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-cream/60 hover:text-gold transition-colors p-2"
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightbox(lightbox < resultados.length - 1 ? lightbox + 1 : 0);
+            }}
+          >
+            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
 
-            <motion.div
-              key={lightbox}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="relative max-w-4xl max-h-[85vh] w-full"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image
-                src={resultados[lightbox].src}
-                alt={`Resultado: ${resultados[lightbox].label}`}
-                width={1200}
-                height={1200}
-                className="object-contain w-full h-full max-h-[80vh]"
-              />
-              <p className="text-center mt-4 text-gold text-sm tracking-widest uppercase">
-                {resultados[lightbox].label}
-              </p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          <div
+            className="relative max-w-4xl max-h-[85vh] w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={resultados[lightbox].src}
+              alt={`Resultado: ${resultados[lightbox].label}`}
+              width={1200}
+              height={1200}
+              className="object-contain w-full h-full max-h-[80vh]"
+            />
+            <p className="text-center mt-4 text-gold text-sm tracking-widest uppercase">
+              {resultados[lightbox].label}
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
