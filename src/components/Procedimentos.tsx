@@ -1,136 +1,342 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
 
-const procedimentos = [
+type Procedimento = {
+  index: string;
+  title: string;
+  description: string;
+  image: string;
+  duration: string;
+  highlight?: string;
+};
+
+const procedimentos: Procedimento[] = [
   {
+    index: "01",
     title: "Platismoplastia",
     description:
-      "Cirurgia para definicao do contorno cervical e rejuvenescimento do pescoco, restaurando a harmonia facial.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z" />
-      </svg>
-    ),
+      "Cirurgia de definicao do contorno cervical e rejuvenescimento do pescoco. Tecnica que devolve o angulo natural entre rosto e mandibula.",
+    image: "/images/procedures/platismoplastia.png",
+    duration: "Cirurgia",
+    highlight: "Especialidade do estudio",
   },
   {
-    title: "Lipo de Papada HD",
+    index: "02",
+    title: "Lipo HD de Papada",
     description:
-      "Lipoaspiracao de alta definicao para remocao da papada, com resultados precisos e naturais.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-      </svg>
-    ),
+      "Lipoaspiracao de alta definicao para remocao precisa da papada. Resultado discreto, com recuperacao curta e cicatrizes minimas.",
+    image: "/images/procedures/lipo-hd-papada.png",
+    duration: "Procedimento",
   },
   {
+    index: "03",
     title: "Deep Neck Lift",
     description:
-      "Lifting profundo do pescoco para rejuvenescimento completo, eliminando flacidez e papada.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0" />
-      </svg>
-    ),
+      "Lifting profundo do pescoco para tratar flacidez avancada. Aborda musculatura, gordura e pele em uma unica intervencao.",
+    image: "/images/procedures/deep-neck-lift.png",
+    duration: "Cirurgia",
   },
   {
-    title: "Lifting de Palpebra a Laser",
+    index: "04",
+    title: "Blefaroplastia a Laser",
     description:
-      "Blefaroplastia a laser para rejuvenescimento do olhar, corrigindo palpebras caidas com precisao.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    ),
+      "Lifting de palpebra com laser para rejuvenescimento do olhar. Corrige excesso de pele e bolsas com cicatriz minima.",
+    image: "/images/procedures/blefaroplastia.png",
+    duration: "Cirurgia",
   },
   {
+    index: "05",
     title: "Harmonizacao Full Face",
     description:
-      "Harmonizacao facial completa combinando tecnicas para equilibrio e beleza natural do rosto.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
-      </svg>
-    ),
+      "Plano facial completo combinando tecnicas injetaveis e ultrassom focado. Equilibrio sob medida para a sua face.",
+    image: "/images/procedures/harmonizacao-full-face.png",
+    duration: "Sessao",
   },
   {
+    index: "06",
     title: "Preenchimento Labial",
     description:
-      "Volumizacao e contorno labial com acido hialuronico, resultando em labios naturalmente definidos.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-      </svg>
-    ),
+      "Volumizacao e contorno com acido hialuronico de ultima geracao. Labios definidos, com expressao natural.",
+    image: "/images/procedures/preenchimento-labial.png",
+    duration: "Sessao",
   },
   {
+    index: "07",
     title: "Fios de PDO",
     description:
-      "Sustentacao facial com fios absorviveis para lifting nao cirurgico, com efeito tensor imediato.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
-      </svg>
-    ),
+      "Sustentacao facial com fios absorviveis. Efeito tensor imediato e estimulo gradual de colageno.",
+    image: "/images/procedures/fios-de-pdo.png",
+    duration: "Procedimento",
   },
   {
-    title: "Lipoaspiracao Facial",
+    index: "08",
+    title: "Lipo Facial Localizada",
     description:
-      "Contorno facial por remocao de gordura localizada, definindo mandibula e angulo cervical.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
+      "Refinamento do contorno mandibular e do angulo cervical por remocao precisa de gordura.",
+    image: "/images/procedures/lipo-facial.png",
+    duration: "Procedimento",
   },
 ];
 
 export default function Procedimentos() {
-  return (
-    <section id="procedimentos" className="relative py-28 lg:py-36 bg-navy-light">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+  const [activeIndex, setActiveIndex] = useState(0);
+  const itemRefs = useRef<(HTMLElement | null)[]>([]);
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.matchMedia("(max-width: 1023px)").matches) return;
+
+    let raf = 0;
+
+    const compute = () => {
+      const center = window.innerHeight / 2;
+      let bestIdx = 0;
+      let bestDist = Infinity;
+      itemRefs.current.forEach((el, i) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const elCenter = rect.top + rect.height / 2;
+        const dist = Math.abs(elCenter - center);
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestIdx = i;
+        }
+      });
+      setActiveIndex(bestIdx);
+    };
+
+    const onScroll = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(() => {
+        compute();
+        raf = 0;
+      });
+    };
+
+    compute();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      if (raf) window.cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
+  return (
+    <section
+      id="procedimentos"
+      className="relative bg-navy-light py-32 lg:py-48"
+    >
+      <div className="section-rule" />
+
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         <AnimatedSection>
-          <div className="text-center mb-20">
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <span className="h-px w-12 bg-gold/40" />
-              <span className="text-gold text-xs tracking-[0.4em] uppercase font-medium">
-                Especialidades
-              </span>
-              <span className="h-px w-12 bg-gold/40" />
+          <div className="grid lg:grid-cols-12 gap-y-10 lg:gap-x-16 items-end mb-20 lg:mb-32">
+            <div className="lg:col-span-5">
+              <div className="flex items-center gap-4 mb-8">
+                <span className="text-[0.65rem] tabular tracking-[0.3em] text-gold/70">
+                  02
+                </span>
+                <span className="eyebrow text-gold">Procedimentos</span>
+              </div>
+              <h2 className="font-serif text-[clamp(2.75rem,6vw,5.25rem)] font-light leading-[0.98] tracking-[-0.02em] text-cream text-balance">
+                Um portfolio
+                <br />
+                <span className="italic text-gold">cirurgico e estetico</span>
+                <br />
+                completo.
+              </h2>
             </div>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-cream tracking-wide">
-              Procedimentos
-            </h2>
+
+            <div className="lg:col-span-6 lg:col-start-7">
+              <p className="text-cream/70 text-base lg:text-lg font-light leading-relaxed body-prose">
+                Do refinamento sutil ao gesto cirurgico, cada procedimento e
+                desenhado a partir de uma analise detalhada da sua face — nunca
+                de um catalogo. A seguir, role para conhecer cada tecnica.
+              </p>
+            </div>
           </div>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {procedimentos.map((proc, i) => (
-            <AnimatedSection key={proc.title} delay={i * 0.05}>
+        <div className="grid lg:grid-cols-12 lg:gap-x-16 relative">
+          <div className="lg:col-span-7">
+            <div className="lg:hidden space-y-24">
+              {procedimentos.map((p) => (
+                <article key={p.index} className="space-y-6">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-navy">
+                    <Image
+                      src={p.image}
+                      alt={p.title}
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 ring-1 ring-inset ring-gold/15 pointer-events-none" />
+                  </div>
+                  <div>
+                    <div className="flex items-baseline gap-3 mb-3">
+                      <span className="text-[0.65rem] tabular tracking-[0.3em] text-gold/70">
+                        {p.index}
+                      </span>
+                      <span className="text-[0.6rem] tabular tracking-[0.25em] uppercase text-cream/40">
+                        {p.duration}
+                      </span>
+                    </div>
+                    <h3 className="font-serif text-3xl font-light text-cream leading-tight">
+                      {p.title}
+                    </h3>
+                    <p className="mt-4 text-cream/70 text-[0.95rem] font-light leading-relaxed body-prose">
+                      {p.description}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="hidden lg:block">
+              {procedimentos.map((p, i) => (
+                <article
+                  key={p.index}
+                  ref={(el) => {
+                    itemRefs.current[i] = el;
+                  }}
+                  className="min-h-[80vh] flex flex-col justify-center py-12"
+                >
+                  <div
+                    className={`transition-all duration-700 ease-out ${
+                      activeIndex === i
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-40 translate-y-2"
+                    }`}
+                  >
+                    <div className="flex items-baseline gap-4 mb-6">
+                      <span
+                        className={`font-serif text-5xl font-light tabular leading-none transition-colors duration-500 ${
+                          activeIndex === i ? "text-gold" : "text-cream/30"
+                        }`}
+                      >
+                        {p.index}
+                      </span>
+                      <span className="h-px flex-1 bg-cream/15" />
+                      <span className="text-[0.6rem] tabular tracking-[0.25em] uppercase text-cream/45">
+                        {p.duration}
+                      </span>
+                    </div>
+
+                    <h3
+                      className={`font-serif text-[clamp(2.5rem,4.5vw,4rem)] font-light leading-[1.02] tracking-[-0.015em] transition-colors duration-500 ${
+                        activeIndex === i ? "text-cream" : "text-cream/55"
+                      }`}
+                    >
+                      {p.title}
+                    </h3>
+
+                    <p
+                      className={`mt-6 text-cream/75 text-[1.05rem] font-light leading-relaxed body-prose max-w-lg transition-opacity duration-500 ${
+                        activeIndex === i ? "opacity-100" : "opacity-50"
+                      }`}
+                    >
+                      {p.description}
+                    </p>
+
+                    {p.highlight && activeIndex === i && (
+                      <p className="mt-6 italic-soft text-gold/80 text-sm tracking-wide">
+                        {p.highlight}
+                      </p>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="hidden lg:block lg:col-span-5">
+            <div className="sticky top-24 h-[calc(100vh-7rem)] flex items-center justify-center">
               <div
-                className="group relative p-8 bg-navy border border-cream/5 hover:border-gold/20 transition-all duration-500 h-full lg:hover:-translate-y-2"
+                className="relative aspect-[4/5] overflow-hidden bg-navy"
+                style={{ height: "min(78vh, 36rem)", width: "auto" }}
               >
-                <div className="absolute top-0 left-0 w-0 h-px bg-gold transition-all duration-500 group-hover:w-full" />
-                <div className="absolute top-0 right-0 w-px h-0 bg-gold transition-all duration-500 group-hover:h-full" />
-                <div className="absolute bottom-0 right-0 w-0 h-px bg-gold transition-all duration-500 group-hover:w-full" />
-                <div className="absolute bottom-0 left-0 w-px h-0 bg-gold transition-all duration-500 group-hover:h-full" />
+                {procedimentos.map((p, i) => (
+                  <div
+                    key={p.image}
+                    className={`absolute inset-0 transition-all duration-1000 ease-out ${
+                      activeIndex === i
+                        ? "opacity-100 scale-100"
+                        : "opacity-0 scale-[1.04]"
+                    }`}
+                  >
+                    <Image
+                      src={p.image}
+                      alt={p.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 40vw"
+                      priority={i === 0}
+                      loading={i === 0 ? "eager" : "lazy"}
+                    />
+                  </div>
+                ))}
 
-                <div className="text-gold/60 group-hover:text-gold transition-colors duration-300 mb-6">
-                  {proc.icon}
+                <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-gold/15" />
+
+                <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-navy/60 to-transparent pointer-events-none" />
+
+                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-cream/80 pointer-events-none">
+                  <span className="italic-soft text-base">
+                    {procedimentos[activeIndex].title}
+                  </span>
+                  <span className="text-[0.65rem] tabular tracking-widest text-gold">
+                    {procedimentos[activeIndex].index} / {String(procedimentos.length).padStart(2, "0")}
+                  </span>
                 </div>
-
-                <h3 className="font-serif text-xl text-cream mb-3 tracking-wide">
-                  {proc.title}
-                </h3>
-
-                <p className="text-cream/50 text-sm leading-relaxed font-light">
-                  {proc.description}
-                </p>
               </div>
-            </AnimatedSection>
-          ))}
+
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 -mr-4 hidden xl:flex flex-col items-center gap-2">
+                {procedimentos.map((p, i) => (
+                  <button
+                    key={p.index}
+                    onClick={() => {
+                      itemRefs.current[i]?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center",
+                      });
+                    }}
+                    aria-label={`Ir para ${p.title}`}
+                    className={`block w-px transition-all duration-500 ${
+                      activeIndex === i
+                        ? "h-10 bg-gold"
+                        : "h-5 bg-cream/25 hover:bg-cream/60"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
+
+        <AnimatedSection>
+          <div className="mt-24 lg:mt-40 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 border-t border-cream/12 pt-12">
+            <p className="italic-soft text-lg text-cream/70 max-w-md">
+              Nem todo procedimento e indicado a todos. A consulta inicial define o caminho.
+            </p>
+            <a
+              href="https://wa.me/5527995351115?text=Ol%C3%A1%2C%20gostaria%20de%20conversar%20sobre%20procedimentos."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              Conversar com o estudio
+              <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.4">
+                <path d="M2 6h8M7 3l3 3-3 3" strokeLinecap="square" />
+              </svg>
+            </a>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );

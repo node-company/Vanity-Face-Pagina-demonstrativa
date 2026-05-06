@@ -1,61 +1,139 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    
+    const onCanPlay = () => setLoaded(true);
+    
+    if (v.readyState >= 2) {
+      setLoaded(true);
+    } else {
+      v.addEventListener("loadeddata", onCanPlay);
+    }
+    
+    v.play().catch(() => {});
+    
+    return () => v.removeEventListener("loadeddata", onCanPlay);
+  }, []);
+
   return (
     <section
       id="inicio"
-      className="relative min-h-[100svh] flex items-center justify-center overflow-hidden"
+      className="relative min-h-[100svh] overflow-hidden bg-ink"
     >
-      <Image
-        src="/images/frente-clinica.jpg"
-        alt="Fachada da Clinica Vanity Face"
-        fill
-        className="object-cover object-center"
-        sizes="100vw"
-        priority
-      />
+      <div className="absolute inset-0">
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/images/frente-clinica.jpg"
+          className={`w-full h-full object-cover object-center transition-opacity duration-1000 ${
+            loaded ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <source src="/images/video-header.mp4" type="video/mp4" />
+        </video>
+      </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/60 to-navy" />
+      <div className="absolute inset-0 bg-gradient-to-b from-navy/65 via-navy/35 to-navy/95" />
+      <div className="absolute inset-0 bg-gradient-to-r from-navy/70 via-transparent to-transparent" />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <div className="animate-hero">
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <span className="h-px w-16 bg-gold/50" />
-            <span className="text-gold text-xs tracking-[0.4em] uppercase font-medium">
-              Dr. Vitor Fernandes
-            </span>
-            <span className="h-px w-16 bg-gold/50" />
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-navy/80 to-transparent pointer-events-none" />
+
+      <div className="relative z-10 min-h-[100svh] flex flex-col">
+        <div className="flex-1 flex items-center">
+          <div className="w-full max-w-[1440px] mx-auto px-6 lg:px-12 pt-32 pb-24">
+            <div className="grid lg:grid-cols-12 gap-8 items-end">
+              <div className="lg:col-span-8 xl:col-span-7 animate-hero">
+                <div className="flex items-center gap-4 mb-10">
+                  <span className="h-px w-12 bg-gold/70" />
+                  <span className="eyebrow text-gold">
+                    Estudio de Cirurgia Facial
+                  </span>
+                </div>
+
+                <h1 className="font-serif text-[clamp(3.5rem,9vw,8.5rem)] font-light leading-[0.92] tracking-[-0.02em] text-cream text-balance">
+                  Onde voce encontra
+                  <br />
+                  <span className="italic font-light text-gold">
+                    a sua melhor versao.
+                  </span>
+                </h1>
+
+                <p className="mt-10 max-w-xl text-cream/75 text-base md:text-lg font-light leading-relaxed">
+                  Cirurgia facial avancada, harmonizacao e cuidado discreto.
+                  Em Vitoria — ES, o consultorio do Dr. Vitor S. Fernandes recebe
+                  pacientes que buscam resultados naturais e duradouros.
+                </p>
+              </div>
+
+              <div className="lg:col-span-4 xl:col-span-5 flex flex-col gap-4 animate-hero-delayed lg:justify-self-end lg:items-end">
+                <a
+                  href="https://wa.me/5527995351115?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary w-full lg:w-auto"
+                >
+                  Agendar consulta
+                  <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.4">
+                    <path d="M2 6h8M7 3l3 3-3 3" strokeLinecap="square" />
+                  </svg>
+                </a>
+                <a href="#sobre" className="btn-ghost w-full lg:w-auto">
+                  Conhecer o Dr.
+                </a>
+              </div>
+            </div>
           </div>
-
-          <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl font-light tracking-wide text-cream mb-6">
-            VANITY{" "}
-            <span className="text-gold">FACE</span>
-          </h1>
-
-          <p className="text-cream/60 text-lg md:text-xl tracking-[0.2em] uppercase font-light mb-4">
-            Harmonizacao e Cirurgia Facial
-          </p>
-
-          <p className="text-cream/40 text-sm tracking-widest uppercase mb-12">
-            CRO 8723-ES &mdash; Vitoria, ES
-          </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-hero-delayed">
-          <a
-            href="https://wa.me/5527995351115?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group px-10 py-4 bg-gold text-navy font-semibold text-sm tracking-widest uppercase transition-colors duration-300 hover:bg-gold-light"
-          >
-            Agende sua Consulta
-          </a>
-          <a
-            href="#sobre"
-            className="px-10 py-4 border border-cream/20 text-cream/70 font-medium text-sm tracking-widest uppercase transition-colors duration-300 hover:border-gold/50 hover:text-gold"
-          >
-            Conheca o Dr.
-          </a>
+        <div className="border-t border-cream/10 animate-hero-late">
+          <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-6 flex flex-wrap items-center gap-x-10 gap-y-3 text-cream/60">
+            <div className="flex items-center gap-3">
+              <span className="text-[0.6rem] tabular tracking-widest text-gold/70">01</span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase">
+                Platismoplastia
+              </span>
+            </div>
+            <div className="hidden md:block w-px h-3 bg-cream/15" />
+            <div className="flex items-center gap-3">
+              <span className="text-[0.6rem] tabular tracking-widest text-gold/70">02</span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase">
+                Lipo HD de Papada
+              </span>
+            </div>
+            <div className="hidden md:block w-px h-3 bg-cream/15" />
+            <div className="flex items-center gap-3">
+              <span className="text-[0.6rem] tabular tracking-widest text-gold/70">03</span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase">
+                Deep Neck Lift
+              </span>
+            </div>
+            <div className="hidden md:block w-px h-3 bg-cream/15" />
+            <div className="flex items-center gap-3">
+              <span className="text-[0.6rem] tabular tracking-widest text-gold/70">04</span>
+              <span className="text-xs font-medium tracking-[0.2em] uppercase">
+                Harmonizacao Full Face
+              </span>
+            </div>
+
+            <div className="ml-auto flex items-center gap-3 text-cream/55">
+              <span className="italic-soft text-sm">Vitoria — ES</span>
+              <span className="w-px h-3 bg-cream/20" />
+              <span className="text-[0.65rem] tracking-[0.2em] uppercase">
+                CRO 8723-ES
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
