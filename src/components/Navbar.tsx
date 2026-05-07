@@ -42,7 +42,7 @@ export default function Navbar() {
     >
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         <div
-          className={`flex items-center justify-between transition-all duration-500 ${
+          className={`relative z-10 flex items-center justify-between transition-all duration-500 ${
             scrolled ? "h-[68px]" : "h-[88px]"
           }`}
         >
