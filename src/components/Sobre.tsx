@@ -20,7 +20,7 @@ export default function Sobre() {
             </div>
             <span className="hidden md:block flex-1 h-px bg-cream/10" />
             <span className="hidden md:inline italic-soft text-sm text-cream/45">
-              Vitoria — ES
+              Vitória — ES
             </span>
           </div>
         </AnimatedSection>
@@ -47,7 +47,7 @@ export default function Sobre() {
                 >
                   <Image
                     src="/images/dr-vitor-portrait.jpg"
-                    alt="Dr. Vitor Fernandes no centro cirurgico"
+                    alt="Dr. Vitor Fernandes no centro cirúrgico"
                     fill
                     className="object-cover object-center"
                     sizes="(max-width: 1024px) 57vw, 24vw"
@@ -77,25 +77,25 @@ export default function Sobre() {
                 <br />
                 como <span className="italic text-gold">arte</span>—
                 <br />
-                executada como ciencia.
+                executada como ciência.
               </h2>
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
               <div className="mt-12 space-y-7 text-cream/75 body-prose text-[1.05rem] font-light">
                 <p>
-                  Dr. Vitor S. Fernandes e referencia em{" "}
+                  Dr. Vitor S. Fernandes é referência em{" "}
                   <em className="text-cream not-italic font-normal">Platismoplastia</em>,{" "}
                   <em className="text-cream not-italic font-normal">Lipo HD de Papada</em> e{" "}
                   <em className="text-cream not-italic font-normal">Deep Neck Lift</em>. Mais de seis
                   anos dedicados a entender, antes de tudo, a face de cada
-                  paciente — para entao desenhar o procedimento que melhor
+                  paciente — para então desenhar o procedimento que melhor
                   respeita a sua identidade.
                 </p>
                 <p>
-                  Especialista em Harmonizacao Orofacial pela FAIPE, foi
-                  destaque como Personalidade na revista Danilo Leonel e e
-                  reconhecido nacionalmente entre os nomes de referencia em
+                  Especialista em Harmonização Orofacial pela FAIPE, foi
+                  destaque como Personalidade na revista Danilo Leonel e é
+                  reconhecido nacionalmente entre os nomes de referência em
                   Platismoplastia.
                 </p>
               </div>
@@ -108,7 +108,7 @@ export default function Sobre() {
                     +6
                   </p>
                   <p className="mt-3 text-[0.65rem] font-medium tracking-[0.25em] uppercase text-cream/50">
-                    Anos de pratica
+                    Anos de prática
                   </p>
                 </div>
                 <div>
@@ -116,7 +116,7 @@ export default function Sobre() {
                     8723
                   </p>
                   <p className="mt-3 text-[0.65rem] font-medium tracking-[0.25em] uppercase text-cream/50">
-                    CRO — Espirito Santo
+                    CRO — Espírito Santo
                   </p>
                 </div>
                 <div>

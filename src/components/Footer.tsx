@@ -4,7 +4,7 @@ const navLinks = [
   { label: "O Especialista", href: "#sobre" },
   { label: "Procedimentos", href: "#procedimentos" },
   { label: "Resultados", href: "#resultados" },
-  { label: "A Clinica", href: "#clinica" },
+  { label: "A Clínica", href: "#clinica" },
   { label: "Contato", href: "#contato" },
 ];
 
@@ -26,7 +26,7 @@ export default function Footer() {
               />
             </a>
             <p className="italic-soft text-lg text-cream/65 leading-snug max-w-md">
-              Cirurgia e harmonizacao facial com discricao, tecnica e estetica
+              Cirurgia e harmonização facial com discrição, técnica e estética
               autoral.
             </p>
             <div className="flex items-baseline gap-3 text-cream/45">
@@ -75,9 +75,9 @@ export default function Footer() {
                 @drvitorsilvafernandes
               </a>
               <p className="text-cream/55 text-sm font-light leading-relaxed">
-                R. Alaor de Queiroz Araujo, 296
+                R. Alaor de Queiróz Araújo, 296
                 <br />
-                Enseada do Sua, Vitoria — ES
+                Enseada do Suá, Vitória — ES
               </p>
             </div>
           </div>
@@ -88,7 +88,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Vanity Face — Todos os direitos reservados
           </p>
           <p className="text-cream/35 text-[0.7rem] tracking-[0.2em] uppercase">
-            Estudio digital por{" "}
+            Estúdio digital por{" "}
             <a
               href="https://www.nodecompany.com.br/"
               target="_blank"

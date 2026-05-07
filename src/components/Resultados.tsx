@@ -7,16 +7,16 @@ import AnimatedSection from "./AnimatedSection";
 type Resultado = { src: string; label: string; category: string };
 
 const named: Resultado[] = [
-  { src: "/images/resultados-1.jpg", label: "Lifting de Palpebra Inferior", category: "Lifting" },
-  { src: "/images/resultados-2.jpg", label: "Lifting de Palpebra a Laser", category: "Lifting" },
-  { src: "/images/resultados-3.jpg", label: "Harmonizacao Full Face", category: "Harmonizacao" },
+  { src: "/images/resultados-1.jpg", label: "Lifting de Pálpebra Inferior", category: "Lifting" },
+  { src: "/images/resultados-2.jpg", label: "Lifting de Pálpebra a Laser", category: "Lifting" },
+  { src: "/images/resultados-3.jpg", label: "Harmonização Full Face", category: "Harmonizacao" },
   { src: "/images/resultados-4.jpg", label: "Preenchimento Labial", category: "Preenchimento" },
   { src: "/images/resultados-5.jpg", label: "Preenchimento Labial", category: "Preenchimento" },
   { src: "/images/resultados-6.jpg", label: "Deep Neck Lift", category: "Cirurgia" },
   { src: "/images/resultados-7.jpg", label: "Platismoplastia", category: "Cirurgia" },
   { src: "/images/resultados-8.jpg", label: "Platismoplastia", category: "Cirurgia" },
   { src: "/images/resultados-9.jpg", label: "Platismoplastia", category: "Cirurgia" },
-  { src: "/images/resultados-10.jpg", label: "Lifting de Palpebra a Laser", category: "Lifting" },
+  { src: "/images/resultados-10.jpg", label: "Lifting de Pálpebra a Laser", category: "Lifting" },
 ];
 
 const editasFiles = [
@@ -27,9 +27,9 @@ const editasFiles = [
 ];
 
 const editasMeta: { label: string; category: string }[] = [
-  { label: "Lifting de Palpebras",                category: "Lifting" },
+  { label: "Lifting de Pálpebras",                 category: "Lifting" },
   { label: "Lipo de Papada",                       category: "Cirurgia" },
-  { label: "Lifting de Palpebras",                category: "Lifting" },
+  { label: "Lifting de Pálpebras",                 category: "Lifting" },
   { label: "Lifting Total de Face",                category: "Lifting" },
   { label: "Lifting Total de Face",                category: "Lifting" },
   { label: "Lifting Total de Face",                category: "Lifting" },
@@ -40,17 +40,17 @@ const editasMeta: { label: string; category: string }[] = [
   { label: "Lipo de Papada",                       category: "Cirurgia" },
   { label: "Lipo de Papada",                       category: "Cirurgia" },
   { label: "Preenchimento de Olheira",             category: "Preenchimento" },
-  { label: "Lifting de Palpebras",                category: "Lifting" },
+  { label: "Lifting de Pálpebras",                 category: "Lifting" },
   { label: "Lifting de Face",                      category: "Lifting" },
   { label: "Lifting de Face",                      category: "Lifting" },
   { label: "Line Skin Hard — Peeling de Fenol",    category: "Harmonizacao" },
   { label: "Lifting de Face",                      category: "Lifting" },
-  { label: "Lifting Labial e de Palpebras",       category: "Lifting" },
+  { label: "Lifting Labial e de Pálpebras",        category: "Lifting" },
   { label: "Endoskin",                             category: "Harmonizacao" },
   { label: "Liplifting",                           category: "Lifting" },
-  { label: "Gluteo",                               category: "Cirurgia" },
-  { label: "Gluteo",                               category: "Cirurgia" },
-  { label: "Gluteo",                               category: "Cirurgia" },
+  { label: "Glúteo",                               category: "Cirurgia" },
+  { label: "Glúteo",                               category: "Cirurgia" },
+  { label: "Glúteo",                               category: "Cirurgia" },
 ];
 
 const editas: Resultado[] = editasFiles.map((file, i) => ({
@@ -65,7 +65,7 @@ const categories = [
   { label: "Tudo", value: "Todos" },
   { label: "Cirurgia", value: "Cirurgia" },
   { label: "Lifting", value: "Lifting" },
-  { label: "Harmonizacao", value: "Harmonizacao" },
+  { label: "Harmonização", value: "Harmonizacao" },
   { label: "Preenchimento", value: "Preenchimento" },
 ];
 
@@ -367,8 +367,8 @@ export default function Resultados() {
 
             <div className="lg:col-span-4 lg:col-start-9">
               <p className="text-cream/65 text-base lg:text-lg font-light leading-relaxed body-prose">
-                Cada caso e fotografado em condicoes consistentes e divulgado
-                somente com autorizacao. Arraste, use as setas do teclado ou
+                Cada caso é fotografado em condições consistentes e divulgado
+                somente com autorização. Arraste, use as setas do teclado ou
                 toque em uma imagem para ampliar.
               </p>
             </div>

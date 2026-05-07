@@ -57,21 +57,21 @@ export default function Hero() {
                 <div className="flex items-center gap-4 mb-10">
                   <span className="h-px w-12 bg-gold/70" />
                   <span className="eyebrow text-gold">
-                    Estudio de Cirurgia Facial
+                    Estúdio de Cirurgia Facial
                   </span>
                 </div>
 
                 <h1 className="font-serif text-[clamp(3.5rem,9vw,8.5rem)] font-light leading-[0.92] tracking-[-0.02em] text-cream text-balance">
-                  Onde voce encontra
+                  Onde você encontra
                   <br />
                   <span className="italic font-light text-gold">
-                    a sua melhor versao.
+                    a sua melhor versão.
                   </span>
                 </h1>
 
                 <p className="mt-10 max-w-xl text-cream/75 text-base md:text-lg font-light leading-relaxed">
-                  Cirurgia facial avancada, harmonizacao e cuidado discreto.
-                  Em Vitoria — ES, o consultorio do Dr. Vitor S. Fernandes recebe
+                  Cirurgia facial avançada, harmonização e cuidado discreto.
+                  Em Vitória — ES, o consultório do Dr. Vitor S. Fernandes recebe
                   pacientes que buscam resultados naturais e duradouros.
                 </p>
               </div>
@@ -122,12 +122,12 @@ export default function Hero() {
             <div className="flex items-center gap-3">
               <span className="text-[0.6rem] tabular tracking-widest text-gold/70">04</span>
               <span className="text-xs font-medium tracking-[0.2em] uppercase">
-                Harmonizacao Full Face
+                Harmonização Full Face
               </span>
             </div>
 
             <div className="ml-auto flex items-center gap-3 text-cream/55">
-              <span className="italic-soft text-sm">Vitoria — ES</span>
+              <span className="italic-soft text-sm">Vitória — ES</span>
               <span className="w-px h-3 bg-cream/20" />
               <span className="text-[0.65rem] tracking-[0.2em] uppercase">
                 CRO 8723-ES

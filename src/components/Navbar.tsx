@@ -7,7 +7,7 @@ const navLinks = [
   { label: "O Especialista", href: "#sobre", index: "01" },
   { label: "Procedimentos", href: "#procedimentos", index: "02" },
   { label: "Resultados", href: "#resultados", index: "03" },
-  { label: "A Clinica", href: "#clinica", index: "04" },
+  { label: "A Clínica", href: "#clinica", index: "04" },
   { label: "Contato", href: "#contato", index: "05" },
 ];
 

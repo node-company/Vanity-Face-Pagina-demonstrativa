@@ -21,8 +21,8 @@ export default function Contato() {
                 <span className="italic text-gold">conversa.</span>
               </h2>
               <p className="mt-8 max-w-xl text-cream/70 text-base lg:text-lg font-light leading-relaxed">
-                Toda jornada com a Vanity Face comeca por uma avaliacao
-                cuidadosa. Conte-nos um pouco sobre voce e nossa equipe entrara
+                Toda jornada com a Vanity Face começa por uma avaliação
+                cuidadosa. Conte-nos um pouco sobre você e nossa equipe entrará
                 em contato.
               </p>
             </div>
@@ -46,12 +46,12 @@ export default function Contato() {
                 </div>
 
                 <div>
-                  <p className="eyebrow text-cream/45 mb-2">Endereco</p>
+                  <p className="eyebrow text-cream/45 mb-2">Endereço</p>
                   <p className="font-serif text-2xl lg:text-3xl text-cream font-light leading-snug">
-                    R. Alaor de Queiroz Araujo, 296
+                    R. Alaor de Queiróz Araújo, 296
                   </p>
                   <p className="italic-soft text-cream/65 mt-1 text-base">
-                    Enseada do Sua, Vitoria — ES, 29050-245
+                    Enseada do Suá, Vitória — ES, 29050-245
                   </p>
                 </div>
 
@@ -73,7 +73,7 @@ export default function Contato() {
                     Segunda a sexta, 9h — 19h
                   </p>
                   <p className="italic-soft text-cream/55 text-sm mt-1">
-                    Sabado mediante agendamento
+                    Sábado mediante agendamento
                   </p>
                 </div>
               </div>
@@ -105,14 +105,14 @@ export default function Contato() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Localizacao Clinica Vanity Face"
+                title="Localização Clínica Vanity Face"
                 className="absolute inset-0"
               />
               <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-gold/15" />
             </div>
             <div className="mt-4 flex items-baseline justify-between text-cream/45">
               <span className="italic-soft text-sm">
-                Enseada do Sua, Vitoria — ES
+                Enseada do Suá, Vitória — ES
               </span>
               <span className="text-[0.6rem] tabular tracking-widest text-gold/60">
                 -20.2997, -40.2896

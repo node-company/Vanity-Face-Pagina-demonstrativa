@@ -18,16 +18,16 @@ const procedimentos: Procedimento[] = [
     index: "01",
     title: "Platismoplastia",
     description:
-      "Cirurgia de definicao do contorno cervical e rejuvenescimento do pescoco. Tecnica que devolve o angulo natural entre rosto e mandibula.",
+      "Cirurgia de definição do contorno cervical e rejuvenescimento do pescoço. Técnica que devolve o ângulo natural entre rosto e mandíbula.",
     image: "/images/procedures/platismoplastia.png",
     duration: "Cirurgia",
-    highlight: "Especialidade do estudio",
+    highlight: "Especialidade do estúdio",
   },
   {
     index: "02",
     title: "Lipo HD de Papada",
     description:
-      "Lipoaspiracao de alta definicao para remocao precisa da papada. Resultado discreto, com recuperacao curta e cicatrizes minimas.",
+      "Lipoaspiração de alta definição para remoção precisa da papada. Resultado discreto, com recuperação curta e cicatrizes mínimas.",
     image: "/images/procedures/lipo-hd-papada.png",
     duration: "Procedimento",
   },
@@ -35,7 +35,7 @@ const procedimentos: Procedimento[] = [
     index: "03",
     title: "Deep Neck Lift",
     description:
-      "Lifting profundo do pescoco para tratar flacidez avancada. Aborda musculatura, gordura e pele em uma unica intervencao.",
+      "Lifting profundo do pescoço para tratar flacidez avançada. Aborda musculatura, gordura e pele em uma única intervenção.",
     image: "/images/procedures/deep-neck-lift.png",
     duration: "Cirurgia",
   },
@@ -43,31 +43,31 @@ const procedimentos: Procedimento[] = [
     index: "04",
     title: "Blefaroplastia a Laser",
     description:
-      "Lifting de palpebra com laser para rejuvenescimento do olhar. Corrige excesso de pele e bolsas com cicatriz minima.",
+      "Lifting de pálpebra com laser para rejuvenescimento do olhar. Corrige excesso de pele e bolsas com cicatriz mínima.",
     image: "/images/procedures/blefaroplastia.png",
     duration: "Cirurgia",
   },
   {
     index: "05",
-    title: "Harmonizacao Full Face",
+    title: "Harmonização Full Face",
     description:
-      "Plano facial completo combinando tecnicas injetaveis e ultrassom focado. Equilibrio sob medida para a sua face.",
+      "Plano facial completo combinando técnicas injetáveis e ultrassom focado. Equilíbrio sob medida para a sua face.",
     image: "/images/procedures/harmonizacao-full-face.png",
-    duration: "Sessao",
+    duration: "Sessão",
   },
   {
     index: "06",
     title: "Preenchimento Labial",
     description:
-      "Volumizacao e contorno com acido hialuronico de ultima geracao. Labios definidos, com expressao natural.",
+      "Volumização e contorno com ácido hialurônico de última geração. Lábios definidos, com expressão natural.",
     image: "/images/procedures/preenchimento-labial.png",
-    duration: "Sessao",
+    duration: "Sessão",
   },
   {
     index: "07",
     title: "Fios de PDO",
     description:
-      "Sustentacao facial com fios absorviveis. Efeito tensor imediato e estimulo gradual de colageno.",
+      "Sustentação facial com fios absorvíveis. Efeito tensor imediato e estímulo gradual de colágeno.",
     image: "/images/procedures/fios-de-pdo.png",
     duration: "Procedimento",
   },
@@ -75,7 +75,7 @@ const procedimentos: Procedimento[] = [
     index: "08",
     title: "Lipo Facial Localizada",
     description:
-      "Refinamento do contorno mandibular e do angulo cervical por remocao precisa de gordura.",
+      "Refinamento do contorno mandibular e do ângulo cervical por remoção precisa de gordura.",
     image: "/images/procedures/lipo-facial.png",
     duration: "Procedimento",
   },
@@ -84,28 +84,34 @@ const procedimentos: Procedimento[] = [
 export default function Procedimentos() {
   const [activeIndex, setActiveIndex] = useState(0);
   const itemRefs = useRef<(HTMLElement | null)[]>([]);
+  const mobileBlockRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (window.matchMedia("(max-width: 1023px)").matches) return;
 
     let raf = 0;
 
     const compute = () => {
-      const center = window.innerHeight / 2;
-      let bestIdx = 0;
+      const isMobile = window.matchMedia("(max-width: 1023px)").matches;
+      const refs = isMobile ? mobileBlockRefs.current : itemRefs.current;
+      if (!refs.length) return;
+      const targetY = isMobile
+        ? window.innerHeight * 0.55
+        : window.innerHeight / 2;
+      let bestIdx = -1;
       let bestDist = Infinity;
-      itemRefs.current.forEach((el, i) => {
+      refs.forEach((el, i) => {
         if (!el) return;
         const rect = el.getBoundingClientRect();
+        if (rect.height === 0) return;
         const elCenter = rect.top + rect.height / 2;
-        const dist = Math.abs(elCenter - center);
+        const dist = Math.abs(elCenter - targetY);
         if (dist < bestDist) {
           bestDist = dist;
           bestIdx = i;
         }
       });
-      setActiveIndex(bestIdx);
+      if (bestIdx >= 0) setActiveIndex(bestIdx);
     };
 
     const onScroll = () => {
@@ -146,7 +152,7 @@ export default function Procedimentos() {
               <h2 className="font-serif text-[clamp(2.75rem,6vw,5.25rem)] font-light leading-[0.98] tracking-[-0.02em] text-cream text-balance">
                 Um portfolio
                 <br />
-                <span className="italic text-gold">cirurgico e estetico</span>
+                <span className="italic text-gold">cirúrgico e estético</span>
                 <br />
                 completo.
               </h2>
@@ -154,9 +160,9 @@ export default function Procedimentos() {
 
             <div className="lg:col-span-6 lg:col-start-7">
               <p className="text-cream/70 text-base lg:text-lg font-light leading-relaxed body-prose">
-                Do refinamento sutil ao gesto cirurgico, cada procedimento e
-                desenhado a partir de uma analise detalhada da sua face — nunca
-                de um catalogo. A seguir, role para conhecer cada tecnica.
+                Do refinamento sutil ao gesto cirúrgico, cada procedimento é
+                desenhado a partir de uma análise detalhada da sua face — nunca
+                de um catálogo. A seguir, role para conhecer cada técnica.
               </p>
             </div>
           </div>
@@ -164,38 +170,120 @@ export default function Procedimentos() {
 
         <div className="grid lg:grid-cols-12 lg:gap-x-16 relative">
           <div className="lg:col-span-7">
-            <div className="lg:hidden space-y-24">
-              {procedimentos.map((p) => (
-                <article key={p.index} className="space-y-6">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-navy">
-                    <Image
-                      src={p.image}
-                      alt={p.title}
-                      fill
-                      className="object-cover"
-                      sizes="100vw"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 ring-1 ring-inset ring-gold/15 pointer-events-none" />
-                  </div>
-                  <div>
-                    <div className="flex items-baseline gap-3 mb-3">
-                      <span className="text-[0.65rem] tabular tracking-[0.3em] text-gold/70">
-                        {p.index}
-                      </span>
-                      <span className="text-[0.6rem] tabular tracking-[0.25em] uppercase text-cream/40">
-                        {p.duration}
-                      </span>
+            <div className="lg:hidden">
+              <div className="sticky top-[68px] z-10 -mx-6 mb-2">
+                <div className="relative h-[32vh] overflow-hidden bg-navy">
+                  {procedimentos.map((p, i) => (
+                    <div
+                      key={p.image}
+                      className={`absolute inset-0 transition-opacity duration-700 ease-out ${
+                        activeIndex === i ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      <Image
+                        src={p.image}
+                        alt={p.title}
+                        fill
+                        className="object-cover"
+                        sizes="100vw"
+                        priority={i === 0}
+                        loading={i === 0 ? "eager" : "lazy"}
+                      />
                     </div>
-                    <h3 className="font-serif text-3xl font-light text-cream leading-tight">
-                      {p.title}
-                    </h3>
-                    <p className="mt-4 text-cream/70 text-[0.95rem] font-light leading-relaxed body-prose">
-                      {p.description}
-                    </p>
+                  ))}
+
+                  <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-transparent to-navy/70 pointer-events-none" />
+
+                  <div className="absolute top-4 left-5 right-5 flex items-baseline justify-between text-cream pointer-events-none">
+                    <span className="italic-soft text-base">
+                      {procedimentos[activeIndex]?.title}
+                    </span>
+                    <span className="text-[0.65rem] tabular tracking-widest text-gold">
+                      {procedimentos[activeIndex]?.index} / {String(procedimentos.length).padStart(2, "0")}
+                    </span>
                   </div>
-                </article>
-              ))}
+
+                  <div className="absolute bottom-0 inset-x-0 h-1 bg-cream/10 pointer-events-none">
+                    <div
+                      className="h-full bg-gold transition-[width] duration-500 ease-out"
+                      style={{
+                        width: `${((activeIndex + 1) / procedimentos.length) * 100}%`,
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                {procedimentos.map((p, i) => {
+                  const isActive = activeIndex === i;
+                  return (
+                    <article
+                      key={p.index}
+                      ref={(el) => {
+                        mobileBlockRefs.current[i] = el;
+                      }}
+                      className="min-h-[55vh] flex flex-col justify-center py-10"
+                    >
+                      <div
+                        className={`flex items-baseline gap-3 mb-4 transition-colors duration-500 ${
+                          isActive ? "" : "opacity-70"
+                        }`}
+                      >
+                        <span
+                          className={`font-serif text-3xl font-light tabular leading-none transition-colors duration-500 ${
+                            isActive ? "text-gold" : "text-gold/40"
+                          }`}
+                        >
+                          {p.index}
+                        </span>
+                        <span className="h-px flex-1 bg-cream/15" />
+                        <span className="text-[0.6rem] tabular tracking-[0.25em] uppercase text-cream/45">
+                          {p.duration}
+                        </span>
+                      </div>
+
+                      <h3
+                        className={`font-serif text-[2rem] font-light leading-tight tracking-[-0.01em] transition-colors duration-500 ${
+                          isActive ? "text-cream" : "text-cream/60"
+                        }`}
+                      >
+                        {p.title}
+                      </h3>
+
+                      <p
+                        className={`mt-4 text-[0.95rem] font-light leading-relaxed body-prose transition-colors duration-500 ${
+                          isActive ? "text-cream/75" : "text-cream/55"
+                        }`}
+                      >
+                        {p.description}
+                      </p>
+
+                      <a
+                        href={`https://wa.me/5527995351115?text=${encodeURIComponent(
+                          `Olá, gostaria de conversar sobre ${p.title}.`
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`link-underline mt-6 w-fit text-sm font-medium tracking-[0.2em] uppercase transition-colors duration-500 ${
+                          isActive ? "text-gold" : "text-gold/60"
+                        }`}
+                      >
+                        Conversar sobre
+                        <svg
+                          className="w-3 h-3"
+                          viewBox="0 0 12 12"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.4"
+                        >
+                          <path d="M2 6h8M7 3l3 3-3 3" strokeLinecap="square" />
+                        </svg>
+                      </a>
+                    </article>
+                  );
+                })}
+              </div>
             </div>
 
             <div className="hidden lg:block">
@@ -322,7 +410,7 @@ export default function Procedimentos() {
         <AnimatedSection>
           <div className="mt-24 lg:mt-40 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 border-t border-cream/12 pt-12">
             <p className="italic-soft text-lg text-cream/70 max-w-md">
-              Nem todo procedimento e indicado a todos. A consulta inicial define o caminho.
+              Nem todo procedimento é indicado a todos. A consulta inicial define o caminho.
             </p>
             <a
               href="https://wa.me/5527995351115?text=Ol%C3%A1%2C%20gostaria%20de%20conversar%20sobre%20procedimentos."
@@ -330,7 +418,7 @@ export default function Procedimentos() {
               rel="noopener noreferrer"
               className="btn-primary"
             >
-              Conversar com o estudio
+              Conversar com o estúdio
               <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.4">
                 <path d="M2 6h8M7 3l3 3-3 3" strokeLinecap="square" />
               </svg>

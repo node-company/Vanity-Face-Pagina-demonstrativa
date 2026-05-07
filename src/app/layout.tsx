@@ -18,23 +18,23 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Vanity Face — Dr. Vitor Fernandes | Cirurgia e Harmonizacao Facial",
+  title: "Vanity Face — Dr. Vitor Fernandes | Cirurgia e Harmonização Facial",
   description:
-    "Estudio de cirurgia e harmonizacao facial em Vitoria — ES. Referencia em Platismoplastia, Lipo HD de Papada e Deep Neck Lift. Dr. Vitor S. Fernandes, CRO 8723-ES.",
+    "Estúdio de cirurgia e harmonização facial em Vitória — ES. Referência em Platismoplastia, Lipo HD de Papada e Deep Neck Lift. Dr. Vitor S. Fernandes, CRO 8723-ES.",
   keywords: [
-    "harmonizacao facial",
+    "harmonização facial",
     "platismoplastia",
     "lipo de papada",
     "deep neck lift",
     "cirurgia facial",
     "vanity face",
     "dr vitor fernandes",
-    "estetica facial vitoria",
+    "estética facial vitória",
   ],
   openGraph: {
     title: "Vanity Face — Dr. Vitor Fernandes",
     description:
-      "Cirurgia e harmonizacao facial em Vitoria — ES. Resultados naturais, discricao e excelencia.",
+      "Cirurgia e harmonização facial em Vitória — ES. Resultados naturais, discrição e excelência.",
     type: "website",
     locale: "pt_BR",
   },
