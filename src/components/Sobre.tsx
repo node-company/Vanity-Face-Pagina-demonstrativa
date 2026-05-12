@@ -145,7 +145,7 @@ export default function Sobre() {
                 </a>
                 <span className="hidden sm:block w-px h-4 bg-cream/15" />
                 <a
-                  href="https://wa.me/5527995351115?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta."
+                  href="https://wa.me/5527999465417?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="link-underline text-gold text-sm font-medium tracking-[0.2em] uppercase"

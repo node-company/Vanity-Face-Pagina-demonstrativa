@@ -21,7 +21,7 @@ const procedimentos: Procedimento[] = [
       "Cirurgia de definição do contorno cervical e rejuvenescimento do pescoço. Técnica que devolve o ângulo natural entre rosto e mandíbula.",
     image: "/images/procedures/platismoplastia.png",
     duration: "Cirurgia",
-    highlight: "Especialidade do estúdio",
+    highlight: "Especialidade da clínica",
   },
   {
     index: "02",
@@ -260,7 +260,7 @@ export default function Procedimentos() {
                       </p>
 
                       <a
-                        href={`https://wa.me/5527995351115?text=${encodeURIComponent(
+                        href={`https://wa.me/5527999465417?text=${encodeURIComponent(
                           `Olá, gostaria de conversar sobre ${p.title}.`
                         )}`}
                         target="_blank"
@@ -413,12 +413,12 @@ export default function Procedimentos() {
               Nem todo procedimento é indicado a todos. A consulta inicial define o caminho.
             </p>
             <a
-              href="https://wa.me/5527995351115?text=Ol%C3%A1%2C%20gostaria%20de%20conversar%20sobre%20procedimentos."
+              href="https://wa.me/5527999465417?text=Ol%C3%A1%2C%20gostaria%20de%20conversar%20sobre%20procedimentos."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
             >
-              Conversar com o estúdio
+              Conversar com a clínica
               <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.4">
                 <path d="M2 6h8M7 3l3 3-3 3" strokeLinecap="square" />
               </svg>

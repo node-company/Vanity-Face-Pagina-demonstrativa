@@ -59,12 +59,12 @@ export default function Footer() {
             <p className="eyebrow text-cream/45">Contato</p>
             <div className="space-y-4">
               <a
-                href="https://wa.me/5527995351115"
+                href="https://wa.me/5527999465417"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block font-serif text-2xl text-cream font-light hover:text-gold transition-colors duration-400"
               >
-                +55 27 99535-1115
+                +55 27 99946-5417
               </a>
               <a
                 href="https://www.instagram.com/drvitorsilvafernandes/"
@@ -75,7 +75,7 @@ export default function Footer() {
                 @drvitorsilvafernandes
               </a>
               <p className="text-cream/55 text-sm font-light leading-relaxed">
-                R. Alaor de Queiróz Araújo, 296
+                Edifício Bay Center, nº 296 — loja 03 e 04
                 <br />
                 Enseada do Suá, Vitória — ES
               </p>

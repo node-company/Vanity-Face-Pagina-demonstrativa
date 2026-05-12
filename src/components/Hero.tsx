@@ -57,7 +57,7 @@ export default function Hero() {
                 <div className="flex items-center gap-4 mb-10">
                   <span className="h-px w-12 bg-gold/70" />
                   <span className="eyebrow text-gold">
-                    Estúdio de Cirurgia Facial
+                    Clínica de Cirurgia Facial
                   </span>
                 </div>
 
@@ -78,7 +78,7 @@ export default function Hero() {
 
               <div className="lg:col-span-4 xl:col-span-5 flex flex-col gap-4 animate-hero-delayed lg:justify-self-end lg:items-end">
                 <a
-                  href="https://wa.me/5527995351115?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta."
+                  href="https://wa.me/5527999465417?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary w-full lg:w-auto"

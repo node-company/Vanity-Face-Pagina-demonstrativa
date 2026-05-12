@@ -36,19 +36,19 @@ export default function Contato() {
                 <div>
                   <p className="eyebrow text-cream/45 mb-2">WhatsApp</p>
                   <a
-                    href="https://wa.me/5527995351115?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta."
+                    href="https://wa.me/5527999465417?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-serif text-3xl lg:text-4xl text-cream font-light hover:text-gold transition-colors duration-400"
                   >
-                    +55 27 99535-1115
+                    +55 27 99946-5417
                   </a>
                 </div>
 
                 <div>
                   <p className="eyebrow text-cream/45 mb-2">Endereço</p>
                   <p className="font-serif text-2xl lg:text-3xl text-cream font-light leading-snug">
-                    R. Alaor de Queiróz Araújo, 296
+                    Edifício Bay Center, nº 296 — loja 03 e 04
                   </p>
                   <p className="italic-soft text-cream/65 mt-1 text-base">
                     Enseada do Suá, Vitória — ES, 29050-245
@@ -79,7 +79,7 @@ export default function Contato() {
               </div>
 
               <a
-                href="https://wa.me/5527995351115?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta."
+                href="https://wa.me/5527999465417?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"
@@ -98,7 +98,7 @@ export default function Contato() {
           <AnimatedSection delay={0.2} className="lg:col-span-7">
             <div className="relative aspect-[5/4] lg:aspect-[4/3] overflow-hidden bg-navy-light">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3741.5!2d-40.2896!3d-20.2997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sR.+Alaor+de+Queir%C3%B3z+Ara%C3%BAjo%2C+296+-+Enseada+do+Su%C3%A1%2C+Vit%C3%B3ria+-+ES%2C+29050-245!5e0!3m2!1spt-BR!2sbr!4v1"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3741.5!2d-40.2896!3d-20.2997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sEdif%C3%ADcio+Bay+Center%2C+n%C2%BA+296+-+loja+03+e+04+-+Enseada+do+Su%C3%A1%2C+Vit%C3%B3ria+-+ES%2C+29050-245!5e0!3m2!1spt-BR!2sbr!4v1"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: "grayscale(0.3) contrast(0.9) brightness(0.9)" }}

@@ -48,7 +48,7 @@ export default function Clinica() {
                 <span className="eyebrow text-gold">A Clínica</span>
               </div>
               <h2 className="font-serif text-[clamp(2.75rem,6vw,5.25rem)] font-light leading-[0.98] tracking-[-0.02em] text-cream text-balance">
-                Um estúdio onde
+                Uma clínica onde
                 <br />
                 <span className="italic text-gold">cada detalhe</span> conta.
               </h2>
@@ -86,7 +86,7 @@ export default function Clinica() {
             </div>
             <div className="mt-4 flex items-baseline justify-between text-cream/55">
               <span className="italic-soft text-sm">
-                R. Alaor de Queiróz Araújo, 296 — Enseada do Suá
+                Edifício Bay Center, nº 296 — loja 03 e 04, Enseada do Suá
               </span>
               <span className="text-[0.6rem] tabular tracking-widest text-gold/70">VIX</span>
             </div>
