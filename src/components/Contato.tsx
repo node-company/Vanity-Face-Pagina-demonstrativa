@@ -17,9 +17,9 @@ export default function Contato() {
                 <span className="eyebrow text-gold">Agendamento</span>
               </div>
               <h2 className="font-serif text-[clamp(2.75rem,6vw,5.25rem)] font-light leading-[0.98] tracking-[-0.02em] text-cream text-balance">
-                Comece com uma
+                Agende sua
                 <br />
-                <span className="italic text-gold">conversa.</span>
+                <span className="italic text-gold">consulta.</span>
               </h2>
               <p className="mt-8 max-w-xl text-cream/70 text-base lg:text-lg font-light leading-relaxed">
                 Toda jornada com a Vanity Face começa por uma avaliação

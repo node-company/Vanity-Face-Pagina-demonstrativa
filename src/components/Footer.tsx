@@ -90,14 +90,14 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Vanity Face — Todos os direitos reservados
           </p>
           <p className="text-cream/35 text-[0.7rem] tracking-[0.2em] uppercase">
-            Estúdio digital por{" "}
+            Página projetada por{" "}
             <a
               href="https://www.nodecompany.com.br/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gold/80 hover:text-gold transition-colors duration-300"
             >
-              NodeCompany
+              Node Company
             </a>
           </p>
         </div>
