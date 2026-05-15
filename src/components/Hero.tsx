@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { OpenLeadFormButton } from "@/components/LeadFormModal";
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -77,17 +78,12 @@ export default function Hero() {
               </div>
 
               <div className="lg:col-span-4 xl:col-span-5 flex flex-col gap-4 animate-hero-delayed lg:justify-self-end lg:items-end">
-                <a
-                  href="https://wa.me/5527999465417?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary w-full lg:w-auto"
-                >
+                <OpenLeadFormButton className="btn-primary w-full lg:w-auto">
                   Agendar consulta
                   <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.4">
                     <path d="M2 6h8M7 3l3 3-3 3" strokeLinecap="square" />
                   </svg>
-                </a>
+                </OpenLeadFormButton>
                 <a href="#sobre" className="btn-ghost w-full lg:w-auto">
                   Conhecer o Dr.
                 </a>

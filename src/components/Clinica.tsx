@@ -86,7 +86,7 @@ export default function Clinica() {
             </div>
             <div className="mt-4 flex items-baseline justify-between text-cream/55">
               <span className="italic-soft text-sm">
-                Edifício Bay Center, nº 296 — loja 03 e 04, Enseada do Suá
+                R. Alaor de Queiróz Araújo, 296 — Enseada do Suá · Edifício Bay Center, loja 03 e 04
               </span>
               <span className="text-[0.6rem] tabular tracking-widest text-gold/70">VIX</span>
             </div>

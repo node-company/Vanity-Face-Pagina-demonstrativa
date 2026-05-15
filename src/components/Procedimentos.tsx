@@ -3,6 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
+import { OpenLeadFormButton } from "@/components/LeadFormModal";
+import type { PROCEDURE_OPTIONS } from "@/lib/validators";
+
+type ProcedureKey = (typeof PROCEDURE_OPTIONS)[number];
 
 type Procedimento = {
   index: string;
@@ -11,6 +15,7 @@ type Procedimento = {
   image: string;
   duration: string;
   highlight?: string;
+  formKey: ProcedureKey;
 };
 
 const procedimentos: Procedimento[] = [
@@ -22,6 +27,7 @@ const procedimentos: Procedimento[] = [
     image: "/images/procedures/platismoplastia.png",
     duration: "Cirurgia",
     highlight: "Especialidade da clínica",
+    formKey: "facelift",
   },
   {
     index: "02",
@@ -30,6 +36,7 @@ const procedimentos: Procedimento[] = [
       "Lipoaspiração de alta definição para remoção precisa da papada. Resultado discreto, com recuperação curta e cicatrizes mínimas.",
     image: "/images/procedures/lipo-hd-papada.png",
     duration: "Procedimento",
+    formKey: "lipo_papada",
   },
   {
     index: "03",
@@ -38,6 +45,7 @@ const procedimentos: Procedimento[] = [
       "Lifting profundo do pescoço para tratar flacidez avançada. Aborda musculatura, gordura e pele em uma única intervenção.",
     image: "/images/procedures/deep-neck-lift.png",
     duration: "Cirurgia",
+    formKey: "facelift",
   },
   {
     index: "04",
@@ -46,6 +54,7 @@ const procedimentos: Procedimento[] = [
       "Lifting de pálpebra com laser para rejuvenescimento do olhar. Corrige excesso de pele e bolsas com cicatriz mínima.",
     image: "/images/procedures/blefaroplastia.png",
     duration: "Cirurgia",
+    formKey: "palpebra",
   },
   {
     index: "05",
@@ -54,6 +63,7 @@ const procedimentos: Procedimento[] = [
       "Plano facial completo combinando técnicas injetáveis e ultrassom focado. Equilíbrio sob medida para a sua face.",
     image: "/images/procedures/harmonizacao-full-face.png",
     duration: "Sessão",
+    formKey: "bioestimulador",
   },
   {
     index: "06",
@@ -62,6 +72,7 @@ const procedimentos: Procedimento[] = [
       "Volumização e contorno com ácido hialurônico de última geração. Lábios definidos, com expressão natural.",
     image: "/images/procedures/preenchimento-labial.png",
     duration: "Sessão",
+    formKey: "bioestimulador",
   },
   {
     index: "07",
@@ -70,6 +81,7 @@ const procedimentos: Procedimento[] = [
       "Sustentação facial com fios absorvíveis. Efeito tensor imediato e estímulo gradual de colágeno.",
     image: "/images/procedures/fios-de-pdo.png",
     duration: "Procedimento",
+    formKey: "bioestimulador",
   },
   {
     index: "08",
@@ -78,6 +90,7 @@ const procedimentos: Procedimento[] = [
       "Refinamento do contorno mandibular e do ângulo cervical por remoção precisa de gordura.",
     image: "/images/procedures/lipo-facial.png",
     duration: "Procedimento",
+    formKey: "lipo_papada",
   },
 ];
 
@@ -259,12 +272,8 @@ export default function Procedimentos() {
                         {p.description}
                       </p>
 
-                      <a
-                        href={`https://wa.me/5527999465417?text=${encodeURIComponent(
-                          `Olá, gostaria de conversar sobre ${p.title}.`
-                        )}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <OpenLeadFormButton
+                        procedure={p.formKey}
                         className={`link-underline mt-6 w-fit text-sm font-medium tracking-[0.2em] uppercase transition-colors duration-500 ${
                           isActive ? "text-gold" : "text-gold/60"
                         }`}
@@ -279,7 +288,7 @@ export default function Procedimentos() {
                         >
                           <path d="M2 6h8M7 3l3 3-3 3" strokeLinecap="square" />
                         </svg>
-                      </a>
+                      </OpenLeadFormButton>
                     </article>
                   );
                 })}
@@ -412,17 +421,12 @@ export default function Procedimentos() {
             <p className="italic-soft text-lg text-cream/70 max-w-md">
               Nem todo procedimento é indicado a todos. A consulta inicial define o caminho.
             </p>
-            <a
-              href="https://wa.me/5527999465417?text=Ol%C3%A1%2C%20gostaria%20de%20conversar%20sobre%20procedimentos."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary"
-            >
-              Conversar com a clínica
+            <OpenLeadFormButton className="btn-primary">
+              Agendar Consulta
               <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.4">
                 <path d="M2 6h8M7 3l3 3-3 3" strokeLinecap="square" />
               </svg>
-            </a>
+            </OpenLeadFormButton>
           </div>
         </AnimatedSection>
       </div>

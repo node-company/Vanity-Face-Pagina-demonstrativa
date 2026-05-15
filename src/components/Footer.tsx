@@ -75,9 +75,11 @@ export default function Footer() {
                 @drvitorsilvafernandes
               </a>
               <p className="text-cream/55 text-sm font-light leading-relaxed">
-                Edifício Bay Center, nº 296 — loja 03 e 04
+                R. Alaor de Queiróz Araújo, 296
                 <br />
                 Enseada do Suá, Vitória — ES
+                <br />
+                <span className="text-cream/40">Edifício Bay Center — loja 03 e 04</span>
               </p>
             </div>
           </div>

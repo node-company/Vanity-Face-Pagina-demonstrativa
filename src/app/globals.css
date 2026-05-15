@@ -379,3 +379,167 @@ body {
     animation: none;
   }
 }
+
+/* Lead form modal */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drawerIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [role="dialog"] *,
+  [role="dialog"] {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ----------------------------------------------------------------------
+   Estilos para impressão de relatórios
+   - Quando NÃO há body[data-print-target]: imprime a página inteira de
+     relatórios; oculta sidebar/topbar e elementos com .reports-no-print.
+   - Quando body[data-print-target="X"]: imprime apenas a section
+     correspondente (#report-X).
+---------------------------------------------------------------------- */
+
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #0b1527 !important;
+  }
+
+  /* esconde shell do CRM */
+  aside,
+  header.h-16 {
+    display: none !important;
+  }
+
+  .reports-no-print {
+    display: none !important;
+  }
+
+  /* capa só na impressão */
+  .print-cover {
+    display: block !important;
+  }
+  .print-cover * {
+    color: #0b1527 !important;
+  }
+
+  /* relatório individual: oculta as outras seções */
+  body[data-print-target] .report-section {
+    display: none !important;
+  }
+  body[data-print-target="summary"] #report-summary,
+  body[data-print-target="funnel"] #report-funnel,
+  body[data-print-target="procedure"] #report-procedure,
+  body[data-print-target="budget"] #report-budget,
+  body[data-print-target="area"] #report-area,
+  body[data-print-target="timeframe"] #report-timeframe,
+  body[data-print-target="authority"] #report-authority,
+  body[data-print-target="source"] #report-source,
+  body[data-print-target="team"] #report-team,
+  body[data-print-target="agenda-report"] #report-agenda-report,
+  body[data-print-target="tags"] #report-tags,
+  body[data-print-target="stale"] #report-stale,
+  body[data-print-target="dashboard"] #report-dashboard {
+    display: block !important;
+  }
+
+  /* impressão: cores, sem scroll, sem sombras */
+  .reports-root,
+  .reports-root * {
+    overflow: visible !important;
+  }
+  .report-section {
+    border-color: #0b1527 !important;
+    background: #ffffff !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 12mm;
+  }
+  .report-section h2,
+  .report-section .text-cream,
+  .report-section .font-display {
+    color: #0b1527 !important;
+  }
+  .report-section .text-cream\/45,
+  .report-section .text-cream\/55,
+  .report-section .text-cream\/65 {
+    color: #475569 !important;
+  }
+  .report-section .text-gold,
+  .report-section .text-gold\/80 {
+    color: #a8892e !important;
+  }
+  .report-section .bg-gold\/30,
+  .report-section .bg-gold {
+    background: #c9a84c !important;
+  }
+  .report-section .bg-cream\/5,
+  .report-section .bg-cream\/10,
+  .report-section .bg-navy,
+  .report-section .bg-navy-light\/20 {
+    background: #ffffff !important;
+  }
+  .report-section .border-cream\/10,
+  .report-section .border-cream\/15 {
+    border-color: #cbd5e1 !important;
+  }
+  .report-section a {
+    color: #0b1527 !important;
+    text-decoration: none;
+  }
+
+  /* SVG charts no print: mantém os strokes inline (cores distintas
+     por série), só ajusta grid, eixo e área para fundo branco. */
+  .report-section .chart-area {
+    fill-opacity: 0.18 !important;
+  }
+  .report-section .chart-grid {
+    stroke: rgba(11, 21, 39, 0.1) !important;
+  }
+  .report-section .chart-axis-text {
+    fill: #475569 !important;
+  }
+  .report-section .chart-legend button {
+    color: #0b1527 !important;
+  }
+  .report-section .chart-tooltip-html {
+    display: none !important;
+  }
+  /* Garante que cores SVG inline NÃO sejam descartadas pelo navegador no print */
+  .report-section svg {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

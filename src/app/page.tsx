@@ -7,10 +7,11 @@ import Clinica from "@/components/Clinica";
 import Contato from "@/components/Contato";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { LeadFormProvider } from "@/components/LeadFormModal";
 
 export default function Home() {
   return (
-    <>
+    <LeadFormProvider>
       <Navbar />
       <main>
         <Hero />
@@ -22,6 +23,6 @@ export default function Home() {
       </main>
       <Footer />
       <WhatsAppButton />
-    </>
+    </LeadFormProvider>
   );
 }

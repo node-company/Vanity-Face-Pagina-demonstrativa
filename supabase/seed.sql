@@ -1,0 +1,21 @@
+-- Seed inicial — cria a primeira conta (clínica) e o primeiro admin.
+--
+-- IMPORTANTE: NÃO rode este script direto. O hash bcrypt da senha precisa ser
+-- gerado primeiro. Use o helper em scripts/create-admin.mjs:
+--
+--   node scripts/create-admin.mjs "Nome do Admin" "admin@vanityface.com" "senhaForte123"
+--
+-- Esse script imprime o INSERT já preenchido com a hash correta. Cole o
+-- resultado aqui (ou rode direto no SQL Editor).
+--
+-- Exemplo (NÃO use estes valores em produção):
+
+-- insert into public.accounts (id, name) values
+--   ('00000000-0000-0000-0000-000000000001', 'Vanity Face — Vitória');
+--
+-- insert into public.account_members (account_id, email, name, password_hash, role) values
+--   ('00000000-0000-0000-0000-000000000001',
+--    'admin@vanityface.com',
+--    'Admin',
+--    '$2a$12$REPLACE_WITH_BCRYPT_HASH_FROM_SCRIPT',
+--    'admin');

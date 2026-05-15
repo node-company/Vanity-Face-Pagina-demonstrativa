@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { OpenLeadFormButton } from "@/components/LeadFormModal";
 
 const navLinks = [
   { label: "O Especialista", href: "#sobre", index: "01" },
@@ -77,17 +78,14 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a
-              href="https://wa.me/5527999465417?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta."
-              target="_blank"
-              rel="noopener noreferrer"
+            <OpenLeadFormButton
               className="ml-2 inline-flex items-center gap-2 px-6 py-3 bg-gold text-navy text-[0.65rem] font-semibold tracking-[0.28em] uppercase hover:bg-gold-light transition-colors duration-400"
             >
               Agendar
               <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.4">
                 <path d="M2 6h8M7 3l3 3-3 3" strokeLinecap="square" />
               </svg>
-            </a>
+            </OpenLeadFormButton>
           </div>
 
           <button
@@ -139,15 +137,12 @@ export default function Navbar() {
               </span>
             </a>
           ))}
-          <a
-            href="https://wa.me/5527999465417?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta."
-            target="_blank"
-            rel="noopener noreferrer"
+          <OpenLeadFormButton
             onClick={() => setMobileOpen(false)}
             className="mt-10 btn-primary"
           >
             Agendar Consulta
-          </a>
+          </OpenLeadFormButton>
           <p className="mt-8 text-xs tracking-[0.2em] uppercase text-cream/45">
             +55 27 99946-5417
           </p>

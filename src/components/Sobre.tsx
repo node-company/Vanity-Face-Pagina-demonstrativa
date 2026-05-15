@@ -1,5 +1,6 @@
 import Image from "next/image";
 import AnimatedSection from "./AnimatedSection";
+import { OpenLeadFormButton } from "@/components/LeadFormModal";
 
 export default function Sobre() {
   return (
@@ -144,17 +145,12 @@ export default function Sobre() {
                   @drvitorsilvafernandes
                 </a>
                 <span className="hidden sm:block w-px h-4 bg-cream/15" />
-                <a
-                  href="https://wa.me/5527999465417?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-underline text-gold text-sm font-medium tracking-[0.2em] uppercase"
-                >
+                <OpenLeadFormButton className="link-underline text-gold text-sm font-medium tracking-[0.2em] uppercase">
                   Falar com a equipe
                   <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.4">
                     <path d="M2 6h8M7 3l3 3-3 3" strokeLinecap="square" />
                   </svg>
-                </a>
+                </OpenLeadFormButton>
               </div>
             </AnimatedSection>
           </div>
