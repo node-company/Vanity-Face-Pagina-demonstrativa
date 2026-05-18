@@ -140,12 +140,6 @@ export const LeadFormSchema = z
       .refine(isValidBrMobile, {
         message: "Informe um WhatsApp brasileiro válido — formato (DD) 9 XXXX-XXXX.",
       }),
-    email: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .min(1, "Informe seu e-mail.")
-      .email("E-mail inválido — confira a digitação."),
     area_concern: z.enum(AREA_CONCERN_OPTIONS),
     area_concern_other: z.string().trim().max(160).optional(),
     procedure_interest: z.enum(PROCEDURE_OPTIONS),

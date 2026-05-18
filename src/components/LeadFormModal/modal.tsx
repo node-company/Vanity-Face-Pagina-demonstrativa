@@ -28,7 +28,6 @@ import { cn } from "@/lib/cn";
 const STEPS = [
   "name",
   "whatsapp",
-  "email",
   "area",
   "procedure",
   "budget",
@@ -41,7 +40,6 @@ type StepKey = (typeof STEPS)[number];
 interface FormState {
   name: string;
   whatsapp: string;
-  email: string;
   area_concern: (typeof AREA_CONCERN_OPTIONS)[number] | "";
   area_concern_other: string;
   procedure_interest: (typeof PROCEDURE_OPTIONS)[number] | "";
@@ -53,7 +51,6 @@ interface FormState {
 const EMPTY: FormState = {
   name: "",
   whatsapp: "",
-  email: "",
   area_concern: "",
   area_concern_other: "",
   procedure_interest: "",
@@ -61,8 +58,6 @@ const EMPTY: FormState = {
   timeframe: "",
   decision_authority: "",
 };
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export default function LeadFormModal() {
   const { isOpen, close, preselectedProcedure } = useLeadForm();
@@ -120,12 +115,6 @@ export default function LeadFormModal() {
           return "Informe um WhatsApp brasileiro válido — formato (DD) 9 XXXX-XXXX.";
         return null;
       }
-      case "email": {
-        const v = data.email.trim();
-        if (v.length === 0) return "Informe seu e-mail.";
-        if (!EMAIL_RE.test(v)) return "E-mail inválido — confira a digitação.";
-        return null;
-      }
       case "area":
         if (!data.area_concern) return "Escolha uma opção para continuar.";
         if (data.area_concern === "outro" && data.area_concern_other.trim().length < 2)
@@ -174,7 +163,6 @@ export default function LeadFormModal() {
     const fd = new FormData();
     fd.set("name", data.name.trim());
     fd.set("whatsapp", data.whatsapp.trim());
-    fd.set("email", data.email.trim().toLowerCase());
     fd.set("area_concern", data.area_concern);
     if (data.area_concern === "outro")
       fd.set("area_concern_other", data.area_concern_other.trim());
@@ -376,31 +364,10 @@ function StepContent({
         </StepShell>
       );
 
-    case "email":
-      return (
-        <StepShell
-          n="03"
-          question="E qual o seu melhor e-mail?"
-          subline="Vamos enviar uma cópia da sua proposta também por aqui."
-          error={stepError}
-        >
-          <TextInput
-            autoFocus
-            type="email"
-            value={data.email}
-            onChange={(e) => setData((d) => ({ ...d, email: e.target.value }))}
-            placeholder="seu@email.com"
-            inputMode="email"
-            autoComplete="email"
-            maxLength={160}
-          />
-        </StepShell>
-      );
-
     case "area":
       return (
         <StepShell
-          n="04"
+          n="03"
           question="Qual dessas áreas mais te incomoda hoje?"
           error={stepError}
         >
@@ -433,7 +400,7 @@ function StepContent({
     case "procedure":
       return (
         <StepShell
-          n="05"
+          n="04"
           question="Qual procedimento você tem mais interesse?"
           subline="Não se preocupe se ainda não tem certeza — é só uma direção."
           error={stepError}
@@ -457,7 +424,7 @@ function StepContent({
     case "budget":
       return (
         <StepShell
-          n="06"
+          n="05"
           question="Para o seu planejamento pessoal, em qual dessas faixas de investimento você se sente mais confortável hoje?"
           subline="Suas respostas nos ajudam a planejar o melhor caminho para você."
           error={stepError}
@@ -478,7 +445,7 @@ function StepContent({
     case "timeframe":
       return (
         <StepShell
-          n="07"
+          n="06"
           question="Quando você pretende realizar o procedimento?"
           error={stepError}
         >
@@ -498,7 +465,7 @@ function StepContent({
     case "authority":
       return (
         <StepShell
-          n="08"
+          n="07"
           question="A decisão depende apenas de você, ou precisa ser compartilhada com alguém?"
           subline="Cônjuge, pais, sócio — qualquer pessoa próxima da decisão."
           error={stepError}

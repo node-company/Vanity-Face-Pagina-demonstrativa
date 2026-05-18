@@ -22,7 +22,6 @@ export async function submitLead(
   const raw: Record<string, FormDataEntryValue | undefined> = {
     name: formData.get("name") ?? undefined,
     whatsapp: formData.get("whatsapp") ?? undefined,
-    email: formData.get("email") ?? undefined,
     area_concern: formData.get("area_concern") ?? undefined,
     area_concern_other: formData.get("area_concern_other") ?? undefined,
     procedure_interest: formData.get("procedure_interest") ?? undefined,
@@ -85,7 +84,6 @@ export async function submitLead(
       account_id: account.id,
       name: data.name,
       whatsapp: formatBrMobile(data.whatsapp),
-      email: data.email,
       area_concern: data.area_concern,
       area_concern_other:
         data.area_concern === "outro" ? data.area_concern_other ?? null : null,
