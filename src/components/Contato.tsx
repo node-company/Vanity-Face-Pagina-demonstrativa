@@ -35,7 +35,7 @@ export default function Contato() {
             <div className="space-y-12">
               <div className="space-y-7 border-t border-cream/15 pt-10">
                 <div>
-                  <p className="eyebrow text-cream/45 mb-2">WhatsApp</p>
+                  <p className="eyebrow text-cream/75 mb-2">WhatsApp</p>
                   <a
                     href="https://wa.me/5527999465417?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta."
                     target="_blank"
@@ -47,20 +47,20 @@ export default function Contato() {
                 </div>
 
                 <div>
-                  <p className="eyebrow text-cream/45 mb-2">Endereço</p>
+                  <p className="eyebrow text-cream/75 mb-2">Endereço</p>
                   <p className="font-serif text-2xl lg:text-3xl text-cream font-light leading-snug">
                     R. Alaor de Queiróz Araújo, 296
                   </p>
                   <p className="italic-soft text-cream/65 mt-1 text-base">
                     Enseada do Suá, Vitória — ES, 29050-245
                   </p>
-                  <p className="italic-soft text-cream/50 mt-1 text-sm">
+                  <p className="italic-soft text-cream/75 mt-1 text-sm">
                     Edifício Bay Center — loja 03 e 04
                   </p>
                 </div>
 
                 <div>
-                  <p className="eyebrow text-cream/45 mb-2">Instagram</p>
+                  <p className="eyebrow text-cream/75 mb-2">Instagram</p>
                   <a
                     href="https://www.instagram.com/drvitorsilvafernandes/"
                     target="_blank"
@@ -72,7 +72,7 @@ export default function Contato() {
                 </div>
 
                 <div>
-                  <p className="eyebrow text-cream/45 mb-2">Atendimento</p>
+                  <p className="eyebrow text-cream/75 mb-2">Atendimento</p>
                   <p className="text-cream/80 text-base font-light tabular">
                     Segunda a sexta, 9h — 19h
                   </p>
@@ -106,7 +106,7 @@ export default function Contato() {
               />
               <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-gold/15" />
             </div>
-            <div className="mt-4 flex items-baseline justify-between text-cream/45">
+            <div className="mt-4 flex items-baseline justify-between text-cream/75">
               <span className="italic-soft text-sm">
                 Enseada do Suá, Vitória — ES
               </span>

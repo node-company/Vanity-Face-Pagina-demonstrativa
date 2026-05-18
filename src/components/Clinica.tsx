@@ -84,7 +84,7 @@ export default function Clinica() {
               </video>
               <div className="absolute inset-0 ring-1 ring-inset ring-gold/15 pointer-events-none" />
             </div>
-            <div className="mt-4 flex items-baseline justify-between text-cream/55">
+            <div className="mt-4 flex items-baseline justify-between text-cream/75">
               <span className="italic-soft text-sm">
                 R. Alaor de Queiróz Araújo, 296 — Enseada do Suá · Edifício Bay Center, loja 03 e 04
               </span>
@@ -124,7 +124,7 @@ export default function Clinica() {
                         {item.label}
                       </span>
                     </div>
-                    <span className="italic-soft text-sm text-cream/50">
+                    <span className="italic-soft text-sm text-cream/75">
                       {item.note}
                     </span>
                   </li>

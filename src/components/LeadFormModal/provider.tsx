@@ -8,8 +8,13 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import LeadFormModal from "./modal";
+import dynamic from "next/dynamic";
 import type { PROCEDURE_OPTIONS } from "@/lib/validators";
+
+const LeadFormModal = dynamic(() => import("./modal"), {
+  ssr: false,
+  loading: () => null,
+});
 
 type ProcedureKey = (typeof PROCEDURE_OPTIONS)[number];
 
@@ -45,7 +50,7 @@ export function LeadFormProvider({ children }: { children: ReactNode }) {
   return (
     <Ctx.Provider value={value}>
       {children}
-      <LeadFormModal />
+      {isOpen && <LeadFormModal />}
     </Ctx.Provider>
   );
 }

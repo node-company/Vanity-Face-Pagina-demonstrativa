@@ -70,9 +70,9 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="group relative flex items-center gap-2 text-[0.7rem] font-medium tracking-[0.22em] uppercase text-cream/75 hover:text-gold transition-colors duration-300"
+                className="group relative flex items-center gap-2 text-[0.7rem] font-medium tracking-[0.22em] uppercase text-cream/90 hover:text-gold transition-colors duration-300"
               >
-                <span className="text-[0.55rem] tabular tracking-widest text-cream/35">
+                <span className="text-[0.55rem] tabular tracking-widest text-cream/70">
                   {link.index}
                 </span>
                 {link.label}
@@ -132,7 +132,7 @@ export default function Navbar() {
               <span className="font-serif text-3xl font-light text-cream group-hover:text-gold transition-colors">
                 {link.label}
               </span>
-              <span className="text-[0.55rem] tabular tracking-widest text-cream/40">
+              <span className="text-[0.55rem] tabular tracking-widest text-cream/70">
                 {link.index}
               </span>
             </a>
@@ -143,7 +143,7 @@ export default function Navbar() {
           >
             Agendar Consulta
           </OpenLeadFormButton>
-          <p className="mt-8 text-xs tracking-[0.2em] uppercase text-cream/45">
+          <p className="mt-8 text-xs tracking-[0.2em] uppercase text-cream/75">
             +55 27 99946-5417
           </p>
         </div>

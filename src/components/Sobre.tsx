@@ -20,7 +20,7 @@ export default function Sobre() {
               <span className="eyebrow text-gold">O Especialista</span>
             </div>
             <span className="hidden md:block flex-1 h-px bg-cream/10" />
-            <span className="hidden md:inline italic-soft text-sm text-cream/45">
+            <span className="hidden md:inline italic-soft text-sm text-cream/75">
               Vitória — ES
             </span>
           </div>
@@ -60,7 +60,7 @@ export default function Sobre() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.12}>
-              <div className="mt-5 flex items-baseline justify-between text-cream/55">
+              <div className="mt-5 flex items-baseline justify-between text-cream/75">
                 <span className="italic-soft text-sm">
                   Dr. Vitor S. Fernandes
                 </span>
@@ -108,7 +108,7 @@ export default function Sobre() {
                   <p className="font-serif text-5xl font-light text-gold leading-none tabular">
                     +6
                   </p>
-                  <p className="mt-3 text-[0.65rem] font-medium tracking-[0.25em] uppercase text-cream/50">
+                  <p className="mt-3 text-[0.65rem] font-medium tracking-[0.25em] uppercase text-cream/75">
                     Anos de prática
                   </p>
                 </div>
@@ -116,7 +116,7 @@ export default function Sobre() {
                   <p className="font-serif text-5xl font-light text-gold leading-none tabular">
                     8723
                   </p>
-                  <p className="mt-3 text-[0.65rem] font-medium tracking-[0.25em] uppercase text-cream/50">
+                  <p className="mt-3 text-[0.65rem] font-medium tracking-[0.25em] uppercase text-cream/75">
                     CRO — Espírito Santo
                   </p>
                 </div>
@@ -124,7 +124,7 @@ export default function Sobre() {
                   <p className="font-serif text-5xl font-light text-gold leading-none">
                     <span className="italic">Faipe</span>
                   </p>
-                  <p className="mt-3 text-[0.65rem] font-medium tracking-[0.25em] uppercase text-cream/50">
+                  <p className="mt-3 text-[0.65rem] font-medium tracking-[0.25em] uppercase text-cream/75">
                     Especialista certificado
                   </p>
                 </div>

@@ -29,7 +29,7 @@ export default function Footer() {
               Cirurgia e harmonização facial com discrição, técnica e estética
               autoral.
             </p>
-            <div className="flex items-baseline gap-3 text-cream/45">
+            <div className="flex items-baseline gap-3 text-cream/75">
               <span className="text-[0.6rem] tabular tracking-widest">
                 Dr. Vitor S. Fernandes
               </span>
@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <p className="eyebrow text-cream/45 mb-6">Navegar</p>
+            <p className="eyebrow text-cream/75 mb-6">Navegar</p>
             <nav className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <a
@@ -56,7 +56,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-4 space-y-6">
-            <p className="eyebrow text-cream/45">Contato</p>
+            <p className="eyebrow text-cream/75">Contato</p>
             <div className="space-y-4">
               <a
                 href="https://wa.me/5527999465417"
@@ -79,23 +79,23 @@ export default function Footer() {
                 <br />
                 Enseada do Suá, Vitória — ES
                 <br />
-                <span className="text-cream/40">Edifício Bay Center — loja 03 e 04</span>
+                <span className="text-cream/70">Edifício Bay Center — loja 03 e 04</span>
               </p>
             </div>
           </div>
         </div>
 
-        <div className="mt-20 pt-8 border-t border-cream/10 flex flex-col md:flex-row items-baseline justify-between gap-4">
-          <p className="text-cream/35 text-[0.7rem] tracking-[0.2em] uppercase">
+        <div className="mt-20 pt-8 border-t border-cream/15 flex flex-col md:flex-row items-baseline justify-between gap-4">
+          <p className="text-cream/70 text-[0.7rem] tracking-[0.2em] uppercase">
             &copy; {new Date().getFullYear()} Vanity Face — Todos os direitos reservados
           </p>
-          <p className="text-cream/35 text-[0.7rem] tracking-[0.2em] uppercase">
+          <p className="text-cream/70 text-[0.7rem] tracking-[0.2em] uppercase">
             Página projetada por{" "}
             <a
               href="https://www.nodecompany.com.br/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gold/80 hover:text-gold transition-colors duration-300"
+              className="text-gold hover:text-gold-light underline underline-offset-4 decoration-gold/60 hover:decoration-gold transition-colors duration-300"
             >
               Node Company
             </a>

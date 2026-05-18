@@ -157,7 +157,7 @@ export default function Procedimentos() {
           <div className="grid lg:grid-cols-12 gap-y-10 lg:gap-x-16 items-end mb-20 lg:mb-32">
             <div className="lg:col-span-5">
               <div className="flex items-center gap-4 mb-8">
-                <span className="text-[0.65rem] tabular tracking-[0.3em] text-gold/70">
+                <span className="text-[0.65rem] tabular tracking-[0.3em] text-gold-light">
                   02
                 </span>
                 <span className="eyebrow text-gold">Procedimentos</span>
@@ -172,7 +172,7 @@ export default function Procedimentos() {
             </div>
 
             <div className="lg:col-span-6 lg:col-start-7">
-              <p className="text-cream/70 text-base lg:text-lg font-light leading-relaxed body-prose">
+              <p className="text-cream/85 text-base lg:text-lg font-light leading-relaxed body-prose">
                 Do refinamento sutil ao gesto cirúrgico, cada procedimento é
                 desenhado a partir de uma análise detalhada da sua face — nunca
                 de um catálogo. A seguir, role para conhecer cada técnica.
@@ -240,25 +240,25 @@ export default function Procedimentos() {
                     >
                       <div
                         className={`flex items-baseline gap-3 mb-4 transition-colors duration-500 ${
-                          isActive ? "" : "opacity-70"
+                          isActive ? "" : "opacity-90"
                         }`}
                       >
                         <span
                           className={`font-serif text-3xl font-light tabular leading-none transition-colors duration-500 ${
-                            isActive ? "text-gold" : "text-gold/40"
+                            isActive ? "text-gold" : "text-gold/80"
                           }`}
                         >
                           {p.index}
                         </span>
-                        <span className="h-px flex-1 bg-cream/15" />
-                        <span className="text-[0.6rem] tabular tracking-[0.25em] uppercase text-cream/45">
+                        <span className="h-px flex-1 bg-cream/25" />
+                        <span className="text-[0.6rem] tabular tracking-[0.25em] uppercase text-cream/75">
                           {p.duration}
                         </span>
                       </div>
 
                       <h3
                         className={`font-serif text-[2rem] font-light leading-tight tracking-[-0.01em] transition-colors duration-500 ${
-                          isActive ? "text-cream" : "text-cream/60"
+                          isActive ? "text-cream" : "text-cream/80"
                         }`}
                       >
                         {p.title}
@@ -266,7 +266,7 @@ export default function Procedimentos() {
 
                       <p
                         className={`mt-4 text-[0.95rem] font-light leading-relaxed body-prose transition-colors duration-500 ${
-                          isActive ? "text-cream/75" : "text-cream/55"
+                          isActive ? "text-cream/85" : "text-cream/75"
                         }`}
                       >
                         {p.description}
@@ -275,7 +275,7 @@ export default function Procedimentos() {
                       <OpenLeadFormButton
                         procedure={p.formKey}
                         className={`link-underline mt-6 w-fit text-sm font-medium tracking-[0.2em] uppercase transition-colors duration-500 ${
-                          isActive ? "text-gold" : "text-gold/60"
+                          isActive ? "text-gold" : "text-gold/85"
                         }`}
                       >
                         Conversar sobre
@@ -314,28 +314,28 @@ export default function Procedimentos() {
                     <div className="flex items-baseline gap-4 mb-6">
                       <span
                         className={`font-serif text-5xl font-light tabular leading-none transition-colors duration-500 ${
-                          activeIndex === i ? "text-gold" : "text-cream/30"
+                          activeIndex === i ? "text-gold" : "text-cream/75"
                         }`}
                       >
                         {p.index}
                       </span>
-                      <span className="h-px flex-1 bg-cream/15" />
-                      <span className="text-[0.6rem] tabular tracking-[0.25em] uppercase text-cream/45">
+                      <span className="h-px flex-1 bg-cream/25" />
+                      <span className="text-[0.6rem] tabular tracking-[0.25em] uppercase text-cream/75">
                         {p.duration}
                       </span>
                     </div>
 
                     <h3
                       className={`font-serif text-[clamp(2.5rem,4.5vw,4rem)] font-light leading-[1.02] tracking-[-0.015em] transition-colors duration-500 ${
-                        activeIndex === i ? "text-cream" : "text-cream/55"
+                        activeIndex === i ? "text-cream" : "text-cream/80"
                       }`}
                     >
                       {p.title}
                     </h3>
 
                     <p
-                      className={`mt-6 text-cream/75 text-[1.05rem] font-light leading-relaxed body-prose max-w-lg transition-opacity duration-500 ${
-                        activeIndex === i ? "opacity-100" : "opacity-50"
+                      className={`mt-6 text-cream/85 text-[1.05rem] font-light leading-relaxed body-prose max-w-lg transition-opacity duration-500 ${
+                        activeIndex === i ? "opacity-100" : "opacity-80"
                       }`}
                     >
                       {p.description}

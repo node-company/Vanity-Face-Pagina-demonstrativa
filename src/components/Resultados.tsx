@@ -377,7 +377,7 @@ export default function Resultados() {
 
         <AnimatedSection delay={0.1}>
           <div className="flex flex-wrap items-center gap-x-2 gap-y-3 mb-10 border-t border-b border-cream/15 py-5">
-            <span className="eyebrow text-cream/45 mr-3">Filtrar</span>
+            <span className="eyebrow text-cream/75 mr-3">Filtrar</span>
             {categories.map((cat) => {
               const active = filter === cat.value;
               return (
@@ -385,7 +385,7 @@ export default function Resultados() {
                   key={cat.value}
                   onClick={() => setFilter(cat.value)}
                   className={`relative px-4 py-2 text-[0.7rem] font-medium tracking-[0.2em] uppercase transition-colors duration-300 ${
-                    active ? "text-gold" : "text-cream/45 hover:text-cream/85"
+                    active ? "text-gold" : "text-cream/75 hover:text-cream"
                   }`}
                 >
                   <span>{cat.label}</span>
@@ -398,7 +398,7 @@ export default function Resultados() {
                 </button>
               );
             })}
-            <span className="ml-auto italic-soft text-sm text-cream/40 tabular">
+            <span className="ml-auto italic-soft text-sm text-cream/75 tabular">
               {String(filtered.length).padStart(2, "0")} casos
             </span>
           </div>
@@ -614,26 +614,31 @@ export default function Resultados() {
             </div>
           </div>
 
-          <p className="hidden lg:flex items-center gap-2 text-[0.65rem] tracking-[0.25em] uppercase text-cream/40">
+          <p className="hidden lg:flex items-center gap-2 text-[0.65rem] tracking-[0.25em] uppercase text-cream/75">
             <kbd className="px-1.5 py-0.5 border border-cream/15 text-[0.55rem] tabular tracking-normal">←</kbd>
             <kbd className="px-1.5 py-0.5 border border-cream/15 text-[0.55rem] tabular tracking-normal">→</kbd>
             navegar
           </p>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center gap-2 max-w-full overflow-hidden">
+        <div className="mt-10 flex flex-wrap items-center gap-1 max-w-full overflow-hidden">
           {filtered.map((item, i) => (
             <button
               key={`dot-${item.src}`}
               type="button"
               onClick={() => scrollToIndex(i)}
               aria-label={`Ir para caso ${i + 1}`}
-              className={`h-1 transition-all duration-500 ${
-                i === activeIdx
-                  ? "bg-gold w-10"
-                  : "bg-cream/15 hover:bg-cream/35 w-4"
-              }`}
-            />
+              aria-current={i === activeIdx ? "true" : undefined}
+              className="group inline-flex items-center justify-center h-6 min-w-6 px-1.5 -my-1 cursor-pointer"
+            >
+              <span
+                className={`block h-1 transition-all duration-500 pointer-events-none ${
+                  i === activeIdx
+                    ? "bg-gold w-10"
+                    : "bg-cream/30 group-hover:bg-cream/55 w-4"
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>

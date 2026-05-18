@@ -37,7 +37,9 @@ export default function WhatsAppButton() {
     >
       {/* Balloon */}
       <div
-        className={`relative bg-navy-lighter border border-gold/30 text-cream text-[0.65rem] tracking-[0.12em] uppercase px-3 py-2 shadow-[0_8px_24px_-6px_rgba(11,21,39,0.8)] max-w-[170px] text-right leading-relaxed transition-all duration-500 ${
+        role="status"
+        aria-live="polite"
+        className={`relative bg-navy-lighter border border-gold/50 text-cream text-[0.7rem] tracking-[0.12em] uppercase px-3 py-2 shadow-[0_8px_24px_-6px_rgba(11,21,39,0.8)] max-w-[180px] text-right leading-relaxed transition-all duration-500 ${
           showBalloon ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2 pointer-events-none"
         }`}
       >
